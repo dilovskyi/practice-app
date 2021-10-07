@@ -2,7 +2,7 @@
 
 // Заполнить массив заданной длины различными простыми числами.
 // Натуральное число, большее единицы, называется простым, если оно делится только на себя и на единицу.
-;(function (arrLength = 100) {
+function fu1(arrLength = 50) {
   const arr = []
 
   function isPrime(num) {
@@ -20,23 +20,25 @@
     }
   }
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu1()
 
 // Создать массив, каждый элемент которого равен квадрату своего номера.
-;(function quadArr(arrLength = 10) {
+function fu2(arrLength = 10) {
   let arr = []
 
   for (let i = 1; i <= arrLength; i++) {
     arr.push((i - 1) ** 2)
   }
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu2()
 
 // Создать массив, на четных местах в котором стоят единицы,
 // а на нечетных местах - числа, равные остатку от деления своего номера на 5.
-;(function (arrLength = 10) {
+function fu3(arrLength = 10) {
   const arr = []
 
   for (let i = 0; i < arrLength; i++) {
@@ -49,11 +51,12 @@
     arr.push(num)
   }
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu3()
 
 // Создать массив, состоящий из трёх подряд идущих одинаковых элементов.
-;(function (lastNumber = 10) {
+function fu4(lastNumber = 5) {
   const arr = []
   let numCount = 0
 
@@ -67,11 +70,12 @@
     }
   }
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu4()
 
 // Создать массив, который одинаково читается как слева направо, так и справа налево.
-;(function (arrLength = 10) {
+function fu5(arrLength = 10) {
   const arr = []
   const arrMid = Math.round(arrLength / 2)
 
@@ -83,11 +87,12 @@
     }
   }
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu5()
 
 // Сформировать массив из случайных чисел, в которых ровно две единицы, стоящие на случайных позициях.
-;(function (arrLength = 3) {
+function fu6(arrLength = 10) {
   const arr = []
   let indexOfOne = null
 
@@ -114,11 +119,12 @@
     indexOfOne = randomIndex
   }
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu6()
 
 // Заполните массив случайным образом нулями и единицами так, чтобы количество единиц было больше количества нулей.
-;(function (arrLength = 10) {
+function fu7(arrLength = 10) {
   const arr = []
   let countOfZero = 0
   let countOfOne = 0
@@ -144,12 +150,13 @@
     }
   }
   checkCountOfOne()
-  // console.log('countOfZero:', countOfZero)
-  // console.log('countOfOne:', countOfOne)
-})()
+
+  return arr
+}
+fu7()
 
 // Сформировать массив из случайных целых чисел от 0 до 9 , в котором единиц от 3 до 5 и двоек больше троек.
-;(function (arrLength = 10) {
+function fu8(arrLength = 10) {
   const arr = []
   let countOfOne = 0
   let countOfTwo = 0
@@ -191,11 +198,13 @@
   // console.log('countOfOne:', countOfOne)
   // console.log('countOfTwo:', countOfTwo)
   // console.log('countOfThree:', countOfThree)
-})()
+  return arr
+}
+fu8()
 
 // Создайте массив, в котором количество отрицательных чисел равно количеству положительных
 // и положительные числа расположены на случайных местах в массиве.
-;(function (maxNumber = 10) {
+function fu9(maxNumber = 10) {
   const mainArr = []
   const onlyPositive = []
 
@@ -232,5 +241,8 @@
     }
   }
 
-  // console.log(mainArr)
-})()
+  return mainArr
+}
+fu9()
+
+module.exports = { fu1, fu2, fu3, fu4, fu5, fu6, fu7, fu8, fu9 }

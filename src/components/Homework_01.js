@@ -1,26 +1,25 @@
 //Вход: массив чисел. Выяснить, является ли последовательность этих чисел такой,
 //в которой двузначные и трехзначные числа чередуются(идут последовательно, двузначные, трехзначные, двузначные и т.д.).
 //Например, для последовательностей 34 678 12 897 23 или 674 12 567 43 ответ будет «Да».
-;(function (arr = [34, 678, 12, 897, 23]) {
+function fu1(arr = [34, 678, 12, 897, 23]) {
   for (let j = 0; j < arr.length; j++) {
     let current = +arr[j].toString().length
     let prev = arr[j - 1] ? +arr[j - 1].toString().length : null
 
     if (current < 2 || current > 3) {
-      // console.log('Нет')
-      return
+      return 'Heт'
     }
 
     if (current === prev) {
-      // console.log('Heт')
-      return
+      return 'Heт'
     }
   }
-  // console.log('Да')
-})()
+  return 'Да'
+}
+fu1()
 
 // Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице.
-;(function (arrLength = 10) {
+function fu2(arrLength = 10) {
   const arr = []
 
   for (let i = 0; i < arrLength - 2; i++) {
@@ -29,11 +28,12 @@
   arr.push(1)
   arr.unshift(1)
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu2()
 
 //Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля.
-;(function (arrLength = 10) {
+function fu3(arrLength = 10) {
   const arr = []
   let num = null
 
@@ -45,12 +45,12 @@
     }
     arr.push(num)
   }
+  return arr
+}
+fu3()
 
-  // console.log(arr)
-})()
-
-//Заполнить массив последовательными нечетными числами, начиная с единицы.
-;(function (arrLength = 10) {
+// Заполнить массив последовательными нечетными числами, начиная с единицы.
+const fu4 = function (arrLength = 10) {
   const arr = []
   let counter = 0
 
@@ -62,8 +62,9 @@
     counter++
   }
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu4()
 
 // Сформировать массив из элементов арифметической прогрессии с заданным первым элементом x и разностью d.
 // Чтобы найти последующий член прогрессии, нужно к предыдущему прибавить разность:
@@ -71,7 +72,7 @@
 // a3 = a2 + d = 2 + 2 = 4;
 // a4 = a3 + d = 4 + 2 = 6;
 // a5 = a4 + d = 6 + 2 = 8.
-;(function (x = 0, d = 2, arrLength = 10) {
+const fu5 = function (x = 0, d = 2, arrLength = 10) {
   const arr = []
   let counter = 0
 
@@ -80,11 +81,12 @@
     counter += d
   }
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu5()
 
 // Сформировать возрастающий массив из четных чисел.
-;(function (arrLength = 10) {
+const fu6 = function (arrLength = 10) {
   const arr = []
   let counter = 1
 
@@ -96,11 +98,12 @@
     counter++
   }
 
-  // console.log(arr)
-})()
+  return arr
+}
+fu6()
 
-//Сформировать убывающий массив из чисел, которые делятся на 3.
-;(function (startNum = 10) {
+// Сформировать убывающий массив из чисел, которые делятся на 3.
+const fu7 = function (startNum = 20) {
   const arr = []
 
   for (let i = startNum; i > 0; i--) {
@@ -108,17 +111,20 @@
       arr.push(i)
     }
   }
-
-  // console.log(arr)
-})()
+  return arr
+}
+fu7()
 
 // Создать массив из n первых чисел Фибоначчи.
-;(function (n = 10) {
+const fu8 = function (n = 10) {
   var fibArr = [0, 1]
 
   for (let i = 2; i < n; i++) {
     fibArr[i] = fibArr[i - 1] + fibArr[i - 2]
   }
 
-  // console.log(fibArr)
-})()
+  return fibArr
+}
+fu8()
+
+module.exports = { fu1, fu2, fu3, fu4, fu5, fu6, fu7, fu8 }
