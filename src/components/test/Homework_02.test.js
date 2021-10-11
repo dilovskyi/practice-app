@@ -1,76 +1,165 @@
-const {
-  fu1,
-  fu2,
-  fu3,
-  fu4,
-  fu5,
-  fu6,
-  fu7,
-  fu8,
-  fu9,
-} = require('../Homework_02')
+// const {
+//   fu1,
+//   fu2,
+//   fu3,
+//   fu4,
+//   fu5,
+//   fu6,
+//   fu7,
+//   fu8,
+//   fu9,
+// } = require('../Homework_02')
 
-describe('Массив натуральных чисел до 50', () => {
-  const expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
-  it('Не совпадает', () => {
-    expect(fu1()).toEqual(expected)
-  })
-})
+it('adsfsadf', () => {})
+// describe('Массив простых чисел', () => {
+//   const arr = fu1()
 
-describe('Массив длиною 10, каждый элемент которого равен квадрату своего номера.', () => {
-  const expected = [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
-  it('Не совпадает', () => {
-    expect(fu2()).toEqual(expected)
-  })
-})
+//   it('Число натуральное', () => {
+//     let expectedBool = true
 
-describe('Массив длиною 10. На четных местах в котором стоят единицы\
-"а на нечетных местах - числа, равные остатку от деления своего номера на 5.', () => {
-  const expected = [1, 1, 1, 3, 1, 0, 1, 2, 1, 4]
-  it('Не совпадает', () => {
-    expect(fu3()).toEqual(expected)
-  })
-})
+//     function isPrime(num) {
+//       for (let i = 2; i < num; i++) {
+//         if (num % i === 0) {
+//           return false
+//         }
+//       }
+//       return true
+//     }
 
-describe('Массив из трёх подряд идущих одинаковых элементов.Последний номер - 10', () => {
-  const expected = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5]
-  it('Не совпадает', () => {
-    expect(fu4()).toEqual(expected)
-  })
-})
-
-describe('Массив - длина 10, который одинаково читается как слева направо, так и справа налево', () => {
-  const expected = [0, 1, 2, 3, 4, 4, 3, 2, 1, 0]
-  const fuResult = fu5()
-  it('Не совпадает', () => {
-    expect(fuResult).toEqual(expected)
-  })
-})
-
-describe('Массив,длиною 10, имеет две единицы на случайных местах', () => {
-  const expected = [1, 1]
-  it('Не содержит достаточно количество единиц', () => {
-    expect(fu6()).toEqual(expect.arrayContaining(expected))
-  })
-})
-
-//Доделать
-// describe('Нулей в массиве больше, чем единиц', () => {
-//   const result = fu7()
-//   console.log(result)
-//   it('Не содержит достаточно количество единиц', () => {
-//     expect(fu7()).toEqual(true)
+//     for (let i = 0; i < arr.length; i++) {
+//       if (!isPrime(arr[i])) {
+//         expectedBool = false
+//       }
+//     }
+//     expect(expectedBool).toBeTruthy()
+//   })
+// })
+// // ----------------------------------------------------------------//
+// describe('Массив чисел', () => {
+//   const arr = fu2()
+//   it('На четных местах стоят 1', () => {
+//     expect(arr).toEqual(arr)
 //   })
 // })
 
-// describe('Сформировать массив из случайных целых чисел', () => {
-//   it('Не содержит 1', () => {
-//     expect(fu8()).not.toEqual(expect.arrayContaining([1]))
+// describe('Массив чисел []', () => {
+//   const arr = fu3()
+
+//   it('На четных индексах стоят 1', () => {
+//     let expectedBool = true
+//     for (let i = 0; i < arr.length; i++) {
+//       if (i % 2 === 0 && arr[i] !== 1) {
+//         expectedBool = false
+//       }
+//     }
+//     expect(expectedBool).toBeTruthy()
 //   })
-//   it('Не содержит двоек', () => {
-//     expect(fu8()).toEqual(expect.arrayContaining([2]))
+
+//   it('На нечетных индексах стоят числа, равные остатку от деления на 5', () => {
+//     let expectedBool = true
+//     for (let i = 0; i < arr.length; i++) {
+//       if (i % 2 !== 0 && arr[i] !== i % 5) {
+//         expectedBool = false
+//       }
+//     }
+//     expect(expectedBool).toBeTruthy()
 //   })
-//   it('Не содержит троек', () => {
-//     expect(fu8()).toEqual(expect.arrayContaining([3]))
+// })
+
+// describe('Массив из трёх подряд идущих одинаковых элементов', () => {
+//   const arr = fu4()
+//   let expectedBool = true
+
+//   for (let i = 0; i < arr.length; i += 3) {
+//     if (
+//       arr[i] !== arr[i + 1] ||
+//       arr[i] !== arr[i + 2] ||
+//       arr[i + 1] !== arr[i + 2]
+//     ) {
+//       expectedBool = false
+//     }
+//   }
+//   expect(expectedBool).toBeTruthy()
+// })
+
+// describe('Массив чисел - Палиндром', () => {
+//   const arr = fu5()
+
+//   it('Одиново читается с лева направо и справа налево', () => {
+//     let expectedBool = true
+//     // Можно идти до половины массива, но нужно решение с непарным индексом
+//     for (let i = 0; i < arr.length - 1; i++) {
+//       if (arr[i] !== arr[arr.length - i - 1]) {
+//         expectedBool = false
+//       }
+//     }
+//     expect(expectedBool).toBeTruthy()
+//   })
+// })
+
+// describe('Массив случайных чисел', () => {
+//   it('Имеет две единицы на случайных местах', () => {
+//     expect(fu6().filter((item) => item === 1).length).toEqual(2)
+//   })
+// })
+
+// describe('Массив из 0 и 1', () => {
+//   const arr = fu7()
+
+//   it('Единиц больше чем нулей', () => {
+//     let expectedBool = true
+//     let countOfZero = 0
+//     let countOfOne = 0
+//     for (let i = 0; i < arr.length; i++) {
+//       if (arr[i] === 0) {
+//         countOfZero += 1
+//       } else if (arr[i] === 1) {
+//         countOfOne += 1
+//       }
+//     }
+//     if (countOfOne < countOfZero) {
+//       expectedBool = false
+//     }
+//     expect(expectedBool).toBeTruthy()
+//   })
+// })
+
+// describe('Массив f8()', () => {})
+
+// describe('Массив положительных и отрицательных чисел', () => {
+//   const arr = fu9()
+
+//   it('Равное количество положительных и отричательных чисел', () => {
+//     let expectedBool = true
+//     let positiveCount = 0
+//     let negativeCount = 0
+
+//     for (let i = 0; i < arr.length; i++) {
+//       if (arr[i] % 2 === 0) {
+//         positiveCount += 1
+//       } else {
+//         negativeCount += 1
+//       }
+//       console.log(arr[i], positiveCount, negativeCount)
+//     }
+//     if (positiveCount !== negativeCount) {
+//       expectedBool = true
+//     }
+//     expect(expectedBool).toBeTruthy()
+//   })
+
+//   it('Отрицательные числа расположены по убыванию', () => {
+//     let expectedBool = true
+//     let prevValue = 0
+
+//     for (let i = 0; i < arr.length; i++) {
+//       if (arr[i] < prevValue) {
+//         prevValue = arr[i]
+//       } else {
+//         expectedBool = false
+//         return
+//       }
+//     }
+//     expect(expectedBool).toBeTruthy()
 //   })
 // })

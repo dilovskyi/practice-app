@@ -25,11 +25,11 @@ function fu1(arrLength = 50) {
 fu1()
 
 // Создать массив, каждый элемент которого равен квадрату своего номера.
-function fu2(arrLength = 10) {
+function fu2(arrLength = 5) {
   let arr = []
 
   for (let i = 1; i <= arrLength; i++) {
-    arr.push((i - 1) ** 2)
+    arr.push((i - 1) ** [i])
   }
 
   return arr
@@ -75,7 +75,7 @@ function fu4(lastNumber = 5) {
 fu4()
 
 // Создать массив, который одинаково читается как слева направо, так и справа налево.
-function fu5(arrLength = 10) {
+function fu5(arrLength = 11) {
   const arr = []
   const arrMid = Math.round(arrLength / 2)
 
@@ -204,7 +204,7 @@ fu8()
 
 // Создайте массив, в котором количество отрицательных чисел равно количеству положительных
 // и положительные числа расположены на случайных местах в массиве.
-function fu9(maxNumber = 10) {
+function fu9(maxNumber = 11) {
   const mainArr = []
   const onlyPositive = []
 

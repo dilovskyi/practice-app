@@ -1,41 +1,45 @@
 //Вход: массив чисел. Выяснить, является ли последовательность этих чисел такой,
 //в которой двузначные и трехзначные числа чередуются(идут последовательно, двузначные, трехзначные, двузначные и т.д.).
 //Например, для последовательностей 34 678 12 897 23 или 674 12 567 43 ответ будет «Да».
-function fu1(arr = [34, 678, 12, 897, 23]) {
-  for (let j = 0; j < arr.length; j++) {
-    let current = +arr[j].toString().length
-    let prev = arr[j - 1] ? +arr[j - 1].toString().length : null
+function fu1(arr) {
+  if (arr && arr.length > 1) {
+    for (let j = 0; j < arr.length; j++) {
+      //Получаем длину каждого значания
+      let current = arr[j].toString().length
+      let prev = arr[j - 1] ? arr[j - 1].toString().length : null
 
-    if (current < 2 || current > 3) {
-      return 'Heт'
+      // Обрабатываем на соответсвие длины 2-3 символа и длины "соседей"
+      if (current < 2 || current > 3 || current === prev) {
+        return 'Нет'
+      }
     }
-
-    if (current === prev) {
-      return 'Heт'
-    }
+    return 'Да'
   }
-  return 'Да'
+  return 'Данные указаны не верно'
 }
-fu1()
 
 // Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице.
-function fu2(arrLength = 10) {
-  const arr = []
+function fu2(arrLength) {
+  if (arrLength && arrLength > 1) {
+    const arr = []
 
-  for (let i = 0; i < arrLength - 2; i++) {
-    arr.push(0)
+    for (let i = 0; i < arrLength - 2; i++) {
+      arr.push(0)
+    }
+    arr.unshift(1)
+    arr.push(1)
+
+    return arr
   }
-  arr.push(1)
-  arr.unshift(1)
-
-  return arr
+  return 'Данные указаны не верно'
 }
-fu2()
 
 //Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля.
-function fu3(arrLength = 10) {
+function fu3(arrLength) {
   const arr = []
   let num = null
+  if (arrLength) {
+  }
 
   for (let i = 0; i < arrLength; i++) {
     if (i % 2 === 0) {
@@ -47,12 +51,11 @@ function fu3(arrLength = 10) {
   }
   return arr
 }
-fu3()
 
 // Заполнить массив последовательными нечетными числами, начиная с единицы.
 const fu4 = function (arrLength = 10) {
   const arr = []
-  let counter = 0
+  let counter = 1
 
   for (let i = 0; i < arrLength; i++) {
     if (counter % 2 === 1) {
