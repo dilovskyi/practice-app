@@ -1,6 +1,5 @@
-import logo from './logo.svg'
-import './App.css'
-import * as Homework_01 from './components/Homework_01'
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
         </a>
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

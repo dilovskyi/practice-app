@@ -1,296 +1,253 @@
 //Проверка в каждом массиве
-function arrayIsCorrert(arr) {
-  if (!Array.isArray(arr)) {
-    return 'Параметры переданы не корректно'
-  } else if (arr.length < 1) {
-    return 'Ваш массив пуст'
-  }
-  return 'OK'
-}
+// function arrayIsCorrert(arr) {
+//   if (!Array.isArray(arr)) {
+//     return "Параметры переданы не корректно";
+//   } else if (arr.length < 1) {
+//     return "Ваш массив пуст";
+//   }
+//   return "OK";
+// }
 
 // Заполните массив случайным образом нулями, единицами и двойками так, чтобы
 // первая двойка в массиве встречалась раньше первой единицы,
 // количество единиц было в точности равно суммарному количеству нулей и двоек.
 // Придумайте правило генерации массива заданной длины. Определите, сгенерирован ли данный массив вашим правилом или нет.
-
 function arrGenerator(arrLength) {
-  let arr = []
-  let iter = 0
-  let zeroQuantity = 0
-  let oneQuantity = 0
-  let twoQuantity = 0
-  let length = arrLength % 2 === 0 ? arrLength : arrLength + 1
+  let arr = [];
+  let iter = 0;
+  let zeroQuantity = 0;
+  let oneQuantity = 0;
+  let twoQuantity = 0;
+  let length = arrLength % 2 === 0 ? arrLength : arrLength + 1;
 
-  function generator() {
+  function addNumInArr() {
     if (iter === length) {
-      return
+      return;
     }
 
-    iter++
-    let num = Math.round(Math.random() * 2)
+    iter++;
+    let num = Math.floor(Math.random() * 3);
 
     // Формируем массив из 0 1 и 2 в случайном порядке. Соблюдая правило:
     // первая двойка в массиве встречалась раньше первой единицы.
     if (num === 0) {
-      zeroQuantity += 1
+      zeroQuantity += 1;
     } else if (num === 1 && twoQuantity) {
-      oneQuantity += 1
+      oneQuantity += 1;
     } else if (num === 2) {
-      twoQuantity += 1
+      twoQuantity += 1;
     } else {
-      iter--
-      generator()
-      return arr
+      iter--;
+      addNumInArr();
+      return arr;
     }
-    arr.push(num)
-    generator()
+    arr.push(num);
+    addNumInArr();
   }
-  generator()
-  return arr
+  addNumInArr();
+  return arr;
 }
 
 function getIndexesOfNums(arr) {
-  let zeroAndTwoIndexes = []
-  let oneIndexes = []
+  let zeroAndTwoIndexes = [];
+  let oneIndexes = [];
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === 1) {
-      oneIndexes.push(i)
+      oneIndexes.push(i);
     } else {
-      zeroAndTwoIndexes.push(i)
+      zeroAndTwoIndexes.push(i);
     }
   }
   return {
     originArr: arr,
     oneIndexes,
     zeroAndTwoIndexes,
-  }
+  };
 }
 
 function setEqualAmount({ originArr, oneIndexes, zeroAndTwoIndexes }) {
-  const arr = originArr
-  let oneQuantity = oneIndexes.length
-  let zeroAndTwoQuantity = zeroAndTwoIndexes.length
-  let ZeroOneorTwoIndex = null
-  let indexInOrinin = null
+  const arr = originArr;
+  let oneQuantity = oneIndexes.length;
+  let zeroAndTwoQuantity = zeroAndTwoIndexes.length;
+  let ZeroOneorTwoIndex = null;
+  let indexInOrinin = null;
 
   function quantityLoop() {
     if (oneQuantity === zeroAndTwoQuantity) {
-      return arr
+      return arr;
     } else if (oneQuantity < zeroAndTwoQuantity) {
-      ZeroOneorTwoIndex = Math.round(Math.random() * (zeroAndTwoQuantity - 1))
-      indexInOrinin = zeroAndTwoIndexes[ZeroOneorTwoIndex]
-      arr[indexInOrinin] = 1
-      oneQuantity += 1
-      zeroAndTwoQuantity -= 1
+      ZeroOneorTwoIndex = Math.round(Math.random() * (zeroAndTwoQuantity - 1));
+      indexInOrinin = zeroAndTwoIndexes[ZeroOneorTwoIndex];
+      arr[indexInOrinin] = 1;
+      oneQuantity += 1;
+      zeroAndTwoQuantity -= 1;
     } else if (oneQuantity > zeroAndTwoQuantity) {
-      let zeroOrTwo = [0, 2]
-      ZeroOneorTwoIndex = Math.round(Math.random() * oneQuantity - 1)
-      indexInOrinin = oneIndexes[ZeroOneorTwoIndex]
-      arr[indexInOrinin] = zeroOrTwo[Math.round(Math.random())]
-      zeroAndTwoQuantity += 1
-      oneQuantity -= 1
+      let zeroOrTwo = [0, 2];
+      ZeroOneorTwoIndex = Math.round(Math.random() * oneQuantity - 1);
+      indexInOrinin = oneIndexes[ZeroOneorTwoIndex];
+      arr[indexInOrinin] = zeroOrTwo[Math.round(Math.random())];
+      zeroAndTwoQuantity += 1;
+      oneQuantity -= 1;
     }
-    quantityLoop()
+    quantityLoop();
   }
-  quantityLoop()
-  return arr
+  quantityLoop();
+  return arr;
 }
 
-function fu1(arrLength) {
-  let arr = arrGenerator(arrLength)
-  let indexesObj = getIndexesOfNums(arr)
-  return setEqualAmount(indexesObj)
+//Проверить на нахождение 2 первее чем 1
+function arrWithEqualQuantityOfTwoPlusZeroToOne(
+  arrLength,
+  arrGenerator,
+  getIndexesOfNums,
+  setEqualAmount
+) {
+  let arr = arrGenerator(arrLength);
+  let indexesObj = getIndexesOfNums(arr);
+  return setEqualAmount(indexesObj);
 }
-fu1(11)
 
 // Определить, содержит ли массив данное число x
-function fu2(arr, x) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK' || typeof x !== 'number') {
-    return arrCheck
-  }
-
-  let isNumberInArr = false
+function isNumInArr(arr, x) {
+  let booleanFlag = false;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === x) {
-      isNumberInArr = true
+      booleanFlag = true;
+      break;
     }
   }
-  return isNumberInArr
+  return booleanFlag;
 }
 
 // Найти количество четных чисел в массиве.
-function fu3(arr) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK') {
-    return arrCheck
-  }
-
-  let doubleCounter = 0
+function quantityOfEvenNums(arr) {
+  let doubleCounter = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] % 2 === 0) {
-      doubleCounter += 1
+      doubleCounter += 1;
     }
   }
-  return doubleCounter
+  return doubleCounter;
 }
 
 // Найти количество чисел в массиве, которые делятся на 3, но не делятся на 7.
-function fu4(arr) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK') {
-    return arrCheck
-  }
-
-  let numberCount = 0
+function quantityOfNumsDivisibleByThreeButNotBySeven(arr) {
+  let numberCount = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] % 3 === 0 && arr[i] % 7 !== 0) {
-      numberCount += 1
+      numberCount += 1;
     }
   }
-  return numberCount
+  return numberCount;
 }
 
 // Определите, каких чисел в массиве больше: которые делятся на первый элемент массива или которые делятся на последний элемент массива.
-function fu5(arr) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK') {
-    return arrCheck
-  }
-
+function divisibleByFirstElementOrLastWhitchMore(arr) {
   function checkNum(divider) {
-    let numCounter = 0
+    let numCounter = 0;
     for (let i = 0; i < arr.length; i++) {
       if (arr[i] % divider === 0) {
-        numCounter += 1
+        numCounter += 1;
       }
     }
-    return numCounter
+    return numCounter;
   }
 
-  let firstNumCounter = checkNum(arr[0])
-  let lastNumCounter = checkNum(arr[arr.length - 1])
+  let firstNumCounter = checkNum(arr[0]);
+  let lastNumCounter = checkNum(arr[arr.length - 1]);
 
   if (firstNumCounter > lastNumCounter) {
-    return 'Больше чисел, которые делятся на первый элемент массива'
+    return "first is more";
   } else if (firstNumCounter < lastNumCounter) {
-    return 'Больше чисел, которые делятся на последний элемент массива'
+    return "last is more";
   } else {
-    return 'Чисел равное количество'
+    return "equally";
   }
 }
 
 // Найдите сумму и произведение элементов массива.
-function fu6(arr) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK') {
-    return arrCheck
-  }
-
-  let sum = 0
-  let product = 1
+function sumAndProductOfNumsInArr(arr) {
+  let sum = 0;
+  let product = 1;
   for (let i = 0; i < arr.length; i++) {
-    sum += arr[i]
-    product *= arr[i]
+    sum += arr[i];
+    product *= arr[i];
   }
-  return [sum, product]
+  return [sum, product];
 }
 
 // Найдите сумму четных чисел массива.
-function fu7(arr) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK') {
-    return arrCheck
-  }
-
-  let numSum = 0
+function sumOfEvenNumsInArr(arr) {
+  let numSum = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] % 2 === 0) {
-      numSum += arr[i]
+      numSum += arr[i];
     }
   }
-  return numSum
+  return numSum;
 }
 
 // Найдите сумму нечетных чисел массива, которые не превосходят 11.
-function fu8(arr) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK') {
-    return arrCheck
-  }
-
-  let numSum = 0
+function sumOfOddNumsLessThanEleven(arr) {
+  let numSum = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] <= 11 && arr[i] % 2 !== 0) {
-      numSum += arr[i]
+      numSum += arr[i];
     }
   }
-  return numSum
+  return numSum;
 }
 
 // Найдите сумму чисел массива, которые расположены до первого четного числа массива.Если четных чисел в массиве нет, то найти сумму всех чисел за исключением крайних.
-function fu9(arr) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK') {
-    return arrCheck
-  }
-
-  let numSum = 0
+function sumOfNumsBeforeEvenNum(arr) {
+  let numSum = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] % 2 === 0) {
-      return numSum
+      return numSum;
     }
-    numSum += arr[i]
+    numSum += arr[i];
   }
   // Отнимаем сумму крайних элементов
-  return numSum - arr[0] - arr[arr.length - 1]
+  return numSum - arr[0] - arr[arr.length - 1];
 }
 
 // Найдите сумму чисел массива, которые стоят на четных местах.
-function fu10(arr) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK') {
-    return arrCheck
-  }
-
-  let numSum = 0
+function sumOfNumsOnEvenIndexes(arr) {
+  let numSum = 0;
   for (let i = 0; i < arr.length; i++) {
     if (i % 2 === 0 && i !== 0) {
-      numSum += arr[i]
+      numSum += arr[i];
     }
   }
-  return numSum
+  return numSum;
 }
 
 // Найдите сумму чисел массива, которые стоят на нечетных местах и при этом превосходят сумму крайних элементов массива.
-function fu11(arr) {
-  const arrCheck = arrayIsCorrert(arr)
-  if (arrCheck !== 'OK') {
-    return arrCheck
-  }
-
-  let numSum = 0
-  let outerNumSum = arr[0] + arr[arr.length - 1]
+function sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems(arr) {
+  let numSum = 0;
+  let outerNumSum = arr[0] + arr[arr.length - 1];
   for (let i = 0; i < arr.length; i++) {
     if ((i === 0 || i % 2 !== 0) && arr[i] > outerNumSum) {
-      numSum += arr[i]
+      numSum += arr[i];
     }
   }
-  return numSum
+  return numSum;
 }
 
-module.exports = {
-  arrayIsCorrert,
-  // fu1,
-  fu2,
-  fu3,
-  fu4,
-  fu5,
-  fu6,
-  fu7,
-  fu8,
-  fu9,
-  fu10,
-  fu11,
-}
+export {
+  arrGenerator,
+  getIndexesOfNums,
+  setEqualAmount,
+  arrWithEqualQuantityOfTwoPlusZeroToOne,
+  isNumInArr,
+  quantityOfEvenNums,
+  quantityOfNumsDivisibleByThreeButNotBySeven,
+  divisibleByFirstElementOrLastWhitchMore,
+  sumAndProductOfNumsInArr,
+  sumOfEvenNumsInArr,
+  sumOfOddNumsLessThanEleven,
+  sumOfNumsBeforeEvenNum,
+  sumOfNumsOnEvenIndexes,
+  sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems,
+};
