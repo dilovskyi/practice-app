@@ -1,6 +1,5 @@
 import {
   arrGenerator,
-  getIndexesOfNums,
   setEqualAmount,
   arrWithEqualQuantityOfTwoPlusZeroToOne,
   isNumInArr,
@@ -15,13 +14,28 @@ import {
   sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems,
 } from "./homework_3";
 
-it("test", () => {
-  arrWithEqualQuantityOfTwoPlusZeroToOne(
-    10,
-    arrGenerator,
-    getIndexesOfNums,
-    setEqualAmount
-  );
+describe("Generate arr with equal quantity of two plus zero to one", () => {
+  it("Two is located in front of one", () => {
+    let arr;
+    let flag = true;
+
+    for (let i = 0; i <= 100; i++) {
+      arr = arrGenerator(10);
+
+      if (arr.indexOf(1) !== -1 && arr.indexOf(1) < arr.indexOf(2)) {
+        flag = false;
+        break;
+      }
+    }
+    expect(flag).toBeTruthy();
+  });
+
+  it("Set equal amount", () => {
+    const result = setEqualAmount([0, 0, 2, 1, 0, 0]);
+    let twoAndZeroCount = result.filter((item) => item !== 1).length;
+    let oneCount = result.filter((item) => item === 1).length;
+    expect(twoAndZeroCount === oneCount).toBeTruthy();
+  });
 });
 
 describe("Find a number in an array", () => {

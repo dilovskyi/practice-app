@@ -48,47 +48,34 @@ function arrGenerator(arrLength) {
   return arr;
 }
 
-function getIndexesOfNums(arr) {
-  let zeroAndTwoIndexes = [];
-  let oneIndexes = [];
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 1) {
-      oneIndexes.push(i);
-    } else {
-      zeroAndTwoIndexes.push(i);
-    }
-  }
-  return {
-    originArr: arr,
-    oneIndexes,
-    zeroAndTwoIndexes,
-  };
-}
-
-function setEqualAmount({ originArr, oneIndexes, zeroAndTwoIndexes }) {
-  const arr = originArr;
-  let oneQuantity = oneIndexes.length;
-  let zeroAndTwoQuantity = zeroAndTwoIndexes.length;
-  let ZeroOneorTwoIndex = null;
-  let indexInOrinin = null;
+function setEqualAmount(arr) {
+  //Get index of first number two
+  const firstTwoIndex = arr.indexOf(2);
+  let indexInOrigin = 0;
 
   function quantityLoop() {
+    let oneQuantity = 0;
+    let zeroAndTwoQuantity = 0;
+    // check number count
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === 1) {
+        oneQuantity += 1;
+      } else if (arr[i] !== 1) {
+        zeroAndTwoQuantity += 1;
+      }
+    }
+    //find nearest element and replace values
     if (oneQuantity === zeroAndTwoQuantity) {
       return arr;
     } else if (oneQuantity < zeroAndTwoQuantity) {
-      ZeroOneorTwoIndex = Math.round(Math.random() * (zeroAndTwoQuantity - 1));
-      indexInOrinin = zeroAndTwoIndexes[ZeroOneorTwoIndex];
-      arr[indexInOrinin] = 1;
-      oneQuantity += 1;
-      zeroAndTwoQuantity -= 1;
+      indexInOrigin = arr.findIndex(
+        (item, index) => item !== 1 && index > firstTwoIndex
+      );
+      arr[indexInOrigin] = 1;
     } else if (oneQuantity > zeroAndTwoQuantity) {
+      indexInOrigin = arr.findIndex((item) => item === 1);
       let zeroOrTwo = [0, 2];
-      ZeroOneorTwoIndex = Math.round(Math.random() * oneQuantity - 1);
-      indexInOrinin = oneIndexes[ZeroOneorTwoIndex];
-      arr[indexInOrinin] = zeroOrTwo[Math.round(Math.random())];
-      zeroAndTwoQuantity += 1;
-      oneQuantity -= 1;
+      arr[indexInOrigin] = zeroOrTwo[Math.round(Math.random())];
     }
     quantityLoop();
   }
@@ -96,7 +83,6 @@ function setEqualAmount({ originArr, oneIndexes, zeroAndTwoIndexes }) {
   return arr;
 }
 
-//Проверить на нахождение 2 первее чем 1
 function arrWithEqualQuantityOfTwoPlusZeroToOne(
   arrLength,
   arrGenerator,
@@ -104,8 +90,7 @@ function arrWithEqualQuantityOfTwoPlusZeroToOne(
   setEqualAmount
 ) {
   let arr = arrGenerator(arrLength);
-  let indexesObj = getIndexesOfNums(arr);
-  return setEqualAmount(indexesObj);
+  return setEqualAmount(arr);
 }
 
 // Определить, содержит ли массив данное число x
@@ -237,7 +222,6 @@ function sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems(arr) {
 
 export {
   arrGenerator,
-  getIndexesOfNums,
   setEqualAmount,
   arrWithEqualQuantityOfTwoPlusZeroToOne,
   isNumInArr,
