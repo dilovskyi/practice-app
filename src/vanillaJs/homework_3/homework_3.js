@@ -86,7 +86,6 @@ function setEqualAmount(arr) {
 function arrWithEqualQuantityOfTwoPlusZeroToOne(
   arrLength,
   arrGenerator,
-  getIndexesOfNums,
   setEqualAmount
 ) {
   let arr = arrGenerator(arrLength);

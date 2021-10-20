@@ -1,0 +1,50 @@
+{
+  "homework_1": [
+    {
+      "id": "zerroArrayOuterNumsIsOne",
+      "description": "Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице.",
+      "handlerName": "zerroArrayOuterNumsIsOne",
+      "handlerParams": { "arrLength": "arrLength" }
+    },
+    {
+      "id": "seriesOfZerosAndOnes",
+      "description": "Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля.",
+      "handlerName": "seriesOfZerosAndOnes",
+      "handlerParams": { "arrLength": "arrLength" }
+    },
+    {
+      "id": "arrayOfOddNumbers",
+      "description": "Заполнить массив последовательными нечетными числами, начиная с единицы",
+      "handlerName": "arrayOfOddNumbers",
+      "handlerParams": { "arrLength": "arrLength" }
+    },
+    {
+      "id": "arithmeticProgressionArr",
+      "description": "Сформировать массив из элементов арифметической прогрессии с заданным первым элементом x и разностью d",
+      "handlerName": "arithmeticProgressionArr",
+      "handlerParams": {
+        "startNum": "startNum",
+        "difference": "difference",
+        "arrLength": { "arrLength": "arrLength" }
+      }
+    },
+    {
+      "id": "evenNumByIncreasing",
+      "description": "Сформировать возрастающий массив из четных чисел.",
+      "handlerName": "evenNumByIncreasing",
+      "handlerParams": { "arrLength": "arrLength" }
+    },
+    {
+      "id": "numberDividedByThree",
+      "description": "Сформировать убывающий массив из чисел, которые делятся на 3.",
+      "handlerName": "numberDividedByThree",
+      "handlerParams": { "startNum": "startNum" }
+    },
+    {
+      "id": "fibArr",
+      "description": "Создать массив из n первых чисел Фибоначчи.",
+      "handlerName": "fibArr",
+      "handlerParams": { "arrLength": "arrLength" }
+    }
+  ]
+}

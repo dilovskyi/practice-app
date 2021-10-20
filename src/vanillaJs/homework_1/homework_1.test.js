@@ -50,7 +50,7 @@ it("Array of even numbers", () => {
 });
 
 it("Array of elements of arithmetic progression", () => {
-  expect(arithmeticProgressionArr(5, 2, 10)).toEqual([5, 7, 9, 11, 13]);
+  expect(arithmeticProgressionArr(5, 1, 2)).toEqual([1, 3, 5, 7, 9]);
 });
 
 it("Even number array by increasing", () => {
@@ -58,9 +58,9 @@ it("Even number array by increasing", () => {
 });
 
 it("Numbers in descending order, which are divided by 3", () => {
-  expect(numberDividedByThree(10)).toEqual([9, 6, 3]);
+  expect(numberDividedByThree("", 10)).toEqual([9, 6, 3]);
 });
 
-it("Fibonacci number array", () => {
+it("Array of Fibonacci numbers", () => {
   expect(fibArr(10)).toEqual([0, 1, 1, 2, 3, 5, 8, 13, 21, 34]);
 });

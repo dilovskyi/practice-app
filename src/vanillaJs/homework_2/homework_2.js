@@ -1,18 +1,3 @@
-//Сделать сортировку без метода сорт
-function SelectionSort(arr) {
-  var n = arr.length;
-  for (var i = 0; i < n - 1; i++) {
-    var min = i;
-    for (var j = i + 1; j < n; j++) {
-      if (arr[j] < arr[min]) min = j;
-    }
-    var t = arr[min];
-    arr[min] = arr[i];
-    arr[i] = t;
-  }
-  return arr;
-}
-
 // Заполнить массив заданной длины различными простыми числами.
 // Натуральное число, большее единицы, называется простым, если оно делится только на себя и на единицу.
 function arrOfPrimeNumbers(arrLength) {
