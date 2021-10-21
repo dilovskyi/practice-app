@@ -1,27 +1,32 @@
 import React, { useState } from "react";
-import { Modal, InputNumber, Button, Space } from "antd";
+import { Modal, InputNumber, Button, Space, Row, Col } from "antd";
+import AreaDataEntry from "../AreaDataEntry";
 import ResultBaner from "../ResultBaner";
 
-const ModalDataEntry = ({ handler, handlerParams, description }) => {
+const ModalDataEntry = ({ description, handler, handlerParams }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [handlerResult, setHandlerResult] = useState();
-  const [arrLength, setArrLength] = useState();
-  const [startNum, setStartNum] = useState();
-  const [difference, setDifference] = useState();
+  const [argumentsArr, setArgumentsArr] = useState([]);
+
+  const onChangeHandler = (event, pos) => {
+    setArgumentsArr((prevArr) => {
+      const newArr = prevArr;
+      newArr[pos] = +event.target.value;
+      console.log(newArr);
+      return newArr;
+    });
+  };
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
-    setHandlerResult(handler(arrLength, startNum, difference).join(", "));
-    setArrLength(null);
-    setStartNum(null);
-    setDifference(null);
-  };
-
   const handleCancel = () => {
     setIsModalVisible(false);
+  };
+
+  const handleOk = () => {
+    setHandlerResult(handler(...argumentsArr));
   };
 
   return (
@@ -38,42 +43,15 @@ const ModalDataEntry = ({ handler, handlerParams, description }) => {
         onCancel={handleCancel}
         destroyOnClose={true}
       >
-        <Space>
-          {handlerParams.arrLength ? (
-            <div>
-              Длина
-              <InputNumber
-                min={1}
-                max={100}
-                value={arrLength}
-                onChange={setArrLength}
-              />
-            </div>
-          ) : null}
-          {handlerParams.startNum ? (
-            <div>
-              Начальное число
-              <InputNumber
-                min={1}
-                max={100}
-                value={startNum}
-                onChange={setStartNum}
-              />
-            </div>
-          ) : null}
-          {handlerParams.difference ? (
-            <div>
-              Разность
-              <InputNumber
-                min={1}
-                max={100}
-                value={difference}
-                onChange={setDifference}
-              />
-            </div>
-          ) : null}
-        </Space>
-
+        {handlerParams.map((param, index) => {
+          return (
+            <AreaDataEntry
+              param={param}
+              key={index}
+              onChangeHandler={onChangeHandler}
+            />
+          );
+        })}
         {handlerResult ? <ResultBaner result={handlerResult} /> : null}
       </Modal>
     </>
