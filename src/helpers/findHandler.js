@@ -8,4 +8,8 @@ const findHandler = (handlerName) => {
   }
 };
 
-export default findHandler;
+function getTasksByType(dataTasks, type) {
+  return dataTasks.filter((item) => item.type === type);
+}
+
+export { findHandler, getTasksByType };

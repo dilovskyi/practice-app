@@ -17,6 +17,7 @@ function isTwoDigitAndThreeDigitAreInTurn(arr) {
   }
   return "The data is incorrect";
 }
+
 // Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице.
 function zerroArrayOuterNumsIsOne(arrLength) {
   if (arrLength && arrLength > 1) {

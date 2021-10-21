@@ -12,7 +12,6 @@ const ModalDataEntry = ({ description, handler, handlerParams }) => {
     setArgumentsArr((prevArr) => {
       const newArr = prevArr;
       newArr[pos] = +event.target.value;
-      console.log(newArr);
       return newArr;
     });
   };

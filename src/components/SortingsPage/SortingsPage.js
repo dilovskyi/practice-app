@@ -1,5 +1,10 @@
+import CollapseList from "../CollapseList";
 function SontingPage() {
-  return <>1</>;
+  return (
+    <>
+      <CollapseList title={"Choose suitable condition"} type={"compare"} />
+    </>
+  );
 }
 
 export default SontingPage;

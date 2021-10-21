@@ -5,7 +5,7 @@ import {
   threeTimesSameNum,
   palindromeArray,
   twoUnitsOnRandomIndexes,
-  unitsMoreNudOnRandomIndexes,
+  zerosLessThenOnes,
   arrToNineWithFixedAmount,
   oddAndEvenQuantityIsEqual,
 } from "./homework_2";
@@ -45,7 +45,7 @@ it("Two units on the random positions", () => {
 });
 
 it("0 in the array is less than", () => {
-  expect.extend({});
+  zerosLessThenOnes();
 });
 
 describe("Arr of random integers from 0 to 9 , in which units from 3 to 5 and deuce are greater than triples.", () => {

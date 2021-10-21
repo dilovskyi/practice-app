@@ -115,7 +115,7 @@ function twoUnitsOnRandomIndexes(arrLength) {
 }
 
 // Заполните массив случайным образом нулями и единицами так, чтобы количество единиц было больше количества нулей.
-function unitsMoreNudOnRandomIndexes(arrLength) {
+function zerosLessThenOnes(arrLength) {
   const arr = [];
   let countOfZero = 0;
   let countOfOne = 0;
@@ -236,7 +236,7 @@ export {
   threeTimesSameNum,
   palindromeArray,
   twoUnitsOnRandomIndexes,
-  unitsMoreNudOnRandomIndexes,
+  zerosLessThenOnes,
   arrToNineWithFixedAmount,
   oddAndEvenQuantityIsEqual,
 };

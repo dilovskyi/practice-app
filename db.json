@@ -1,39 +1,39 @@
 {
-  "homework_1": [
+  "tasks": [
     {
       "id": "isTwoDigitAndThreeDigitAreInTurn",
       "type": "compare",
       "description": "Выяснить, является ли последовательность этих чисел такой, в которой двузначные и трехзначные числа чередуются(идут последовательно, двузначные, трехзначные, двузначные и т.д.). Например, для последовательностей 34 678 12 897 23 или 674 12 567 43 ответ будет «Да».",
       "handlerName": "isTwoDigitAndThreeDigitAreInTurn",
-      "handlerArg": [{ "pos": 0, "label": "Cписок чисел" }]
+      "handlerParams": [{ "pos": 0, "label": "Cписок чисел" }]
     },
     {
       "id": "zerroArrayOuterNumsIsOne",
       "type": "generate",
       "description": "Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице.",
       "handlerName": "zerroArrayOuterNumsIsOne",
-      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "seriesOfZerosAndOnes",
       "type": "generate",
       "description": "Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля.",
       "handlerName": "seriesOfZerosAndOnes",
-      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "arrayOfOddNumbers",
       "type": "generate",
       "description": "Заполнить массив последовательными нечетными числами, начиная с единицы",
       "handlerName": "arrayOfOddNumbers",
-      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "arithmeticProgressionArr",
       "type": "generate",
       "description": "Сформировать массив из элементов арифметической прогрессии с заданным первым элементом x и разностью d",
       "handlerName": "arithmeticProgressionArr",
-      "handlerArg": [
+      "handlerParams": [
         { "pos": 0, "label": "Длина массива" },
         { "pos": 1, "label": "Начальное значение" },
         { "pos": 2, "label": "Разность" }
@@ -44,37 +44,36 @@
       "type": "generate",
       "description": "Сформировать возрастающий массив из четных чисел.",
       "handlerName": "evenNumByIncreasing",
-      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "numberDividedByThree",
       "type": "generate",
       "description": "Сформировать убывающий массив из чисел, которые делятся на 3.",
       "handlerName": "numberDividedByThree",
-      "handlerArg": [{ "pos": 0, "label": "Начальное значение массива" }]
+      "handlerParams": [{ "pos": 0, "label": "Начальное значение массива" }]
     },
     {
       "id": "fibArr",
       "type": "generate",
       "description": "Создать массив из n первых чисел Фибоначчи.",
       "handlerName": "fibArr",
-      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
-    }
-  ],
-  "homework_2": [
+      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
+    },
+
     {
       "id": "evenIsOneAndOddIsRemainderOfTheDivisionByFive",
       "type": "generate",
       "description": "Создать массив, на четных местах в котором стоят единицы,а на нечетных местах - числа, равные остатку от деления своего номера на 5.",
       "handlerName": "evenIsOneAndOddIsRemainderOfTheDivisionByFive",
-      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "threeTimesSameNum",
       "type": "generate",
       "description": "Создать массив, состоящий из трёх подряд идущих одинаковых элементов.",
       "handlerName": "threeTimesSameNum",
-      "handlerArg": [{ "pos": 0, "label": "Последнее значение массива" }]
+      "handlerParams": [{ "pos": 0, "label": "Последнее значение массива" }]
     },
     {
       "id": "palindromeArray",
@@ -110,9 +109,7 @@
       "description": "Создайте массив, в котором количество отрицательных чисел равно количеству положительных и положительные числа расположены на случайных местах в массиве.",
       "handlerName": "oddAndEvenQuantityIsEqual",
       "handlerParams": [{ "pos": 0, "label": "maxNumber" }]
-    }
-  ],
-  "homework_3": [
+    },
     {
       "id": "isNumInArr",
       "type": "find",
