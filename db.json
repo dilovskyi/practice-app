@@ -1,50 +1,183 @@
 {
   "homework_1": [
     {
+      "id": "isTwoDigitAndThreeDigitAreInTurn",
+      "type": "compare",
+      "description": "Выяснить, является ли последовательность этих чисел такой, в которой двузначные и трехзначные числа чередуются(идут последовательно, двузначные, трехзначные, двузначные и т.д.). Например, для последовательностей 34 678 12 897 23 или 674 12 567 43 ответ будет «Да».",
+      "handlerName": "isTwoDigitAndThreeDigitAreInTurn",
+      "handlerArg": [{ "pos": 0, "label": "Cписок чисел" }]
+    },
+    {
       "id": "zerroArrayOuterNumsIsOne",
+      "type": "generate",
       "description": "Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице.",
       "handlerName": "zerroArrayOuterNumsIsOne",
-      "handlerParams": { "arrLength": "arrLength" }
+      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "seriesOfZerosAndOnes",
+      "type": "generate",
       "description": "Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля.",
       "handlerName": "seriesOfZerosAndOnes",
-      "handlerParams": { "arrLength": "arrLength" }
+      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "arrayOfOddNumbers",
+      "type": "generate",
       "description": "Заполнить массив последовательными нечетными числами, начиная с единицы",
       "handlerName": "arrayOfOddNumbers",
-      "handlerParams": { "arrLength": "arrLength" }
+      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "arithmeticProgressionArr",
+      "type": "generate",
       "description": "Сформировать массив из элементов арифметической прогрессии с заданным первым элементом x и разностью d",
       "handlerName": "arithmeticProgressionArr",
-      "handlerParams": {
-        "startNum": "startNum",
-        "difference": "difference",
-        "arrLength": { "arrLength": "arrLength" }
-      }
+      "handlerArg": [
+        { "pos": 0, "label": "Длина массива" },
+        { "pos": 1, "label": "Начальное значение" },
+        { "pos": 2, "label": "Разность" }
+      ]
     },
     {
       "id": "evenNumByIncreasing",
+      "type": "generate",
       "description": "Сформировать возрастающий массив из четных чисел.",
       "handlerName": "evenNumByIncreasing",
-      "handlerParams": { "arrLength": "arrLength" }
+      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "numberDividedByThree",
+      "type": "generate",
       "description": "Сформировать убывающий массив из чисел, которые делятся на 3.",
       "handlerName": "numberDividedByThree",
-      "handlerParams": { "startNum": "startNum" }
+      "handlerArg": [{ "pos": 0, "label": "Начальное значение массива" }]
     },
     {
       "id": "fibArr",
+      "type": "generate",
       "description": "Создать массив из n первых чисел Фибоначчи.",
       "handlerName": "fibArr",
-      "handlerParams": { "arrLength": "arrLength" }
+      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
+    }
+  ],
+  "homework_2": [
+    {
+      "id": "evenIsOneAndOddIsRemainderOfTheDivisionByFive",
+      "type": "generate",
+      "description": "Создать массив, на четных местах в котором стоят единицы,а на нечетных местах - числа, равные остатку от деления своего номера на 5.",
+      "handlerName": "evenIsOneAndOddIsRemainderOfTheDivisionByFive",
+      "handlerArg": [{ "pos": 0, "label": "Длина массива" }]
+    },
+    {
+      "id": "threeTimesSameNum",
+      "type": "generate",
+      "description": "Создать массив, состоящий из трёх подряд идущих одинаковых элементов.",
+      "handlerName": "threeTimesSameNum",
+      "handlerArg": [{ "pos": 0, "label": "Последнее значение массива" }]
+    },
+    {
+      "id": "palindromeArray",
+      "type": "generate",
+      "description": "Создать массив, который одинаково читается как слева направо, так и справа налево.",
+      "handlerName": "palindromeArray",
+      "handlerParams": [{ "pos": 0, "label": "arrLength" }]
+    },
+    {
+      "id": "twoUnitsOnRandomIndexes",
+      "type": "generate",
+      "description": "Сформировать массив из случайных чисел, в которых ровно две единицы, стоящие на случайных позициях.",
+      "handlerName": "twoUnitsOnRandomIndexes",
+      "handlerParams": [{ "pos": 0, "label": "arrLength" }]
+    },
+    {
+      "id": "zerosLessThenOnes",
+      "type": "generate",
+      "description": "Заполните массив случайным образом нулями и единицами так, чтобы количество единиц было больше количества нулей.",
+      "handlerName": "zerosLessThenOnes",
+      "handlerParams": [{ "pos": 0, "label": "arrLength" }]
+    },
+    {
+      "id": "arrToNineWithFixedAmount",
+      "type": "generate",
+      "description": "Сформировать массив из случайных целых чисел от 0 до 9 , в котором единиц от 3 до 5 и двоек больше троек.",
+      "handlerName": "arrToNineWithFixedAmount",
+      "handlerParams": [{ "pos": 0, "label": "arrLength" }]
+    },
+    {
+      "id": "oddAndEvenQuantityIsEqual",
+      "type": "generate",
+      "description": "Создайте массив, в котором количество отрицательных чисел равно количеству положительных и положительные числа расположены на случайных местах в массиве.",
+      "handlerName": "oddAndEvenQuantityIsEqual",
+      "handlerParams": [{ "pos": 0, "label": "maxNumber" }]
+    }
+  ],
+  "homework_3": [
+    {
+      "id": "isNumInArr",
+      "type": "find",
+      "description": "Определить, содержит ли массив данное число x",
+      "handlerName": "isNumInArr",
+      "handlerParams": [
+        { "pos": 0, "label": "Список чисел" },
+        { "pos": 1, "label": "Искомое число" }
+      ]
+    },
+    {
+      "id": "quantityOfEvenNums",
+      "type": "find",
+      "description": "Найти количество четных чисел в массиве.",
+      "handlerName": "quantityOfEvenNums",
+      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+    },
+    {
+      "id": "quantityOfNumsDivisibleByThreeButNotBySeven",
+      "type": "find",
+      "description": "Найти количество чисел в массиве, которые делятся на 3, но не делятся на 7.",
+      "handlerName": "quantityOfNumsDivisibleByThreeButNotBySeven",
+      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+    },
+    {
+      "id": "divisibleByFirstElementOrLastWhitchMore",
+      "type": "compare",
+      "description": "Определите, каких чисел в массиве больше: которые делятся на первый элемент массива или которые делятся на последний элемент массива.",
+      "handlerName": "divisibleByFirstElementOrLastWhitchMore",
+      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+    },
+    {
+      "id": "sumAndProductOfNumsInArr",
+      "type": "generate",
+      "description": "Найдите сумму и произведение элементов массива.",
+      "handlerName": "sumAndProductOfNumsInArr",
+      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+    },
+    {
+      "id": "sumOfOddNumsLessThanEleven",
+      "type": "generate",
+      "description": "Найдите сумму нечетных чисел массива, которые не превосходят 11.",
+      "handlerName": "sumOfOddNumsLessThanEleven",
+      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+    },
+    {
+      "id": "sumOfNumsBeforeEvenNum",
+      "type": "generate",
+      "description": "Найдите сумму чисел массива, которые расположены до первого четного числа массива.Если четных чисел в массиве нет, то найти сумму всех чисел за исключением крайних.",
+      "handlerName": "sumOfNumsBeforeEvenNum",
+      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+    },
+    {
+      "id": "sumOfNumsOnEvenIndexes",
+      "type": "generate",
+      "description": "Найдите сумму чисел массива, которые стоят на четных местах.",
+      "handlerName": "sumOfNumsOnEvenIndexes",
+      "handlerParams": { "pos": 0, "label": "Список чисел" }
+    },
+    {
+      "id": "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems",
+      "type": "generate",
+      "description": "Найдите сумму чисел массива, которые стоят на нечетных местах и при этом превосходят сумму крайних элементов массива.",
+      "handlerName": "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems",
+      "handlerParams": { "pos": 0, "label": "Список чисел" }
     }
   ]
 }
