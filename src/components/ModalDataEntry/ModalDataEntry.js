@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Modal, InputNumber, Button, Space, Row, Col } from "antd";
+import { Modal, Button } from "antd";
 import AreaDataEntry from "../AreaDataEntry";
 import ResultBaner from "../ResultBaner";
+import { Trans } from "react-i18next";
 
 const ModalDataEntry = ({ description, handler, handlerParams }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -31,14 +32,14 @@ const ModalDataEntry = ({ description, handler, handlerParams }) => {
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        Задать параметры
+        <Trans i18nKey="buttonsText.modal.open" />
       </Button>
       <Modal
         title={description}
         visible={isModalVisible}
-        okText={"Выполнить"}
+        okText={<Trans i18nKey="buttonsText.modal.start" />}
         onOk={handleOk}
-        cancelText={"Закрыть"}
+        cancelText={<Trans i18nKey="buttonsText.modal.cencel" />}
         onCancel={handleCancel}
         destroyOnClose={true}
       >

@@ -1,0 +1,20 @@
+{
+  "headerItems": { "generate": "Генерация", "compare": "Сравнение" },
+  "generatePage": {
+    "pageTitle": "Выберите условие генерации"
+  },
+  "comparePage": {
+    "pageTitle": "Выберите условие сравнения"
+  },
+  "buttonsText": {
+    "modal": {
+      "open": "Задать параметры",
+      "start": "Выполнить",
+      "cencel": "Закрыть"
+    },
+    "changeLang": {
+      "ru": "Рус",
+      "eng": "Aнгл"
+    }
+  }
+}

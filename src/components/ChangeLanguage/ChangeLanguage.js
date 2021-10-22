@@ -1,27 +1,23 @@
-import React from "react";
-import { Trans, useTranslation } from "react-i18next";
+import { Select } from "antd";
+import { Trans } from "react-i18next";
+const { Option } = Select;
 
-function ChangeLanguage() {
-  const { i18n } = useTranslation();
-  const changeLaguage = (languale) => {
-    i18n.changeLanguage(languale);
-  };
+function ChangeLanguage({ languages, changeLangHandler }) {
   return (
     <>
-      <button
-        onClick={() => {
-          changeLaguage("en");
-        }}
+      <Select
+        defaultValue="eng"
+        style={{ width: 120 }}
+        onChange={changeLangHandler}
       >
-        EN
-      </button>
-      <button
-        onClick={() => {
-          changeLaguage("ru");
-        }}
-      >
-        RU
-      </button>
+        {languages.map((langName) => {
+          return (
+            <Option key={langName} value={langName}>
+              {<Trans i18nKey={`buttonsText.changeLang.${langName}`} />}
+            </Option>
+          );
+        })}
+      </Select>
     </>
   );
 }

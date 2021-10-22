@@ -1,36 +1,32 @@
-import React from "react";
+import { useState } from "react";
 import { Menu } from "antd";
 import { SettingOutlined, SortAscendingOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { Trans } from "react-i18next";
 
-class AppHeader extends React.Component {
-  state = {
-    current: "mail",
+function AppHeader() {
+  const [current, setCurrent] = useState("generators");
+
+  const handleClick = (e) => {
+    setCurrent(e.key);
   };
 
-  handleClick = (e) => {
-    this.setState({ current: e.key });
-  };
-
-  render() {
-    const { current } = this.state;
-    return (
-      <Menu
-        onClick={this.handleClick}
-        selectedKeys={[current]}
-        mode="horizontal"
-      >
+  return (
+    <>
+      <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
         <Menu.Item key="generators" icon={<SettingOutlined />}>
-          Генераторы
-          <Link to="/generators"></Link>
+          <Link to="/generators">
+            <Trans i18nKey="headerItems.generate" />
+          </Link>
         </Menu.Item>
         <Menu.Item key="sorting" icon={<SortAscendingOutlined />}>
-          Сортировки
-          <Link to="/sortings"></Link>
+          <Link to="/compare">
+            <Trans i18nKey="headerItems.compare" />
+          </Link>
         </Menu.Item>
       </Menu>
-    );
-  }
+    </>
+  );
 }
 
 export default AppHeader;

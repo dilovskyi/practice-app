@@ -1,0 +1,20 @@
+{
+  "headerItems": { "generate": "Generators", "compare": "Compare" },
+  "generatePage": {
+    "pageTitle": "Select the generation condition"
+  },
+  "comparePage": {
+    "pageTitle": "Select comparison option"
+  },
+  "buttonsText": {
+    "modal": {
+      "open": "Set parameters",
+      "start": "Start",
+      "cencel": "Cencel"
+    },
+    "changeLang": {
+      "ru": "Rus",
+      "eng": "Eng"
+    }
+  }
+}

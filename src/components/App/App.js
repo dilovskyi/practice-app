@@ -1,18 +1,18 @@
+import { LANGUAGES } from "../../const/lang";
 import { createContext, useState, useEffect } from "react";
-import Header from "../AppHeader";
+import AppHeader from "../AppHeader";
 import GeneratorsPage from "../GeneratorsPage";
 import SortingsPage from "../SortingsPage";
 import { getData } from "../../services/getData";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ChangeLanguage from "../ChangeLanguage";
-
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 export const TaskContext = createContext();
 
 function App() {
-  const { t, i18n } = useTranslation();
   const [dataTasks, setDataTask] = useState([]);
+  const { i18n } = useTranslation();
 
   const changeLaguage = (languale) => {
     i18n.changeLanguage(languale);
@@ -27,10 +27,12 @@ function App() {
   return (
     <>
       <Router>
-        <ChangeLanguage />
         <TaskContext.Provider value={dataTasks}>
-          <Header />
-
+          <AppHeader />
+          <ChangeLanguage
+            languages={LANGUAGES}
+            changeLangHandler={changeLaguage}
+          />
           <Switch>
             <Route path="/generators">
               <GeneratorsPage />
