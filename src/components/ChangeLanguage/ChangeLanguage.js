@@ -6,13 +6,13 @@ function ChangeLanguage({ languages, changeLangHandler }) {
   return (
     <>
       <Select
-        defaultValue="eng"
+        defaultValue="en"
         style={{ width: 120 }}
         onChange={changeLangHandler}
       >
-        {languages.map((langName) => {
+        {languages.map((langName, index) => {
           return (
-            <Option key={langName} value={langName}>
+            <Option key={index} value={langName}>
               {<Trans i18nKey={`buttonsText.changeLang.${langName}`} />}
             </Option>
           );

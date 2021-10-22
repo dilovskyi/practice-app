@@ -7,20 +7,18 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export const TaskContext = createContext();
+export const LanguageContext = createContext();
 
 function App() {
   const [dataTasks, setDataTask] = useState([]);
+  // Add getting information from cookies/storage
   const [pageLang, setPageLang] = useState("en");
   const { i18n } = useTranslation();
 
   const changeLaguage = (language) => {
-    setPageLang(language);
     i18n.changeLanguage(language);
+    setPageLang(language);
   };
-
-  useEffect(() => {
-    console.log("333");
-  }, [pageLang]);
 
   useEffect(() => {
     getData(`http://localhost:3000/tasks`).then((data) => {
@@ -33,15 +31,17 @@ function App() {
     <>
       <Router>
         <TaskContext.Provider value={dataTasks}>
-          <AppHeader changeLangHandler={changeLaguage} />
-          <Switch>
-            <Route path="/generate">
-              <GeneratorsPage />
-            </Route>
-            <Route path="/compare">
-              <SortingsPage />
-            </Route>
-          </Switch>
+          <LanguageContext.Provider value={pageLang}>
+            <AppHeader changeLangHandler={changeLaguage} />
+            <Switch>
+              <Route path="/generate">
+                <GeneratorsPage />
+              </Route>
+              <Route path="/compare">
+                <SortingsPage />
+              </Route>
+            </Switch>
+          </LanguageContext.Provider>
         </TaskContext.Provider>
       </Router>
     </>

@@ -3,35 +3,50 @@
     {
       "id": "isTwoDigitAndThreeDigitAreInTurn",
       "type": "compare",
-      "description": "Выяснить, является ли последовательность этих чисел такой, в которой двузначные и трехзначные числа чередуются(идут последовательно, двузначные, трехзначные, двузначные и т.д.). Например, для последовательностей 34 678 12 897 23 или 674 12 567 43 ответ будет «Да».",
+      "description": {
+        "en": "Find out if the sequence of these numbers is one that uses the following numbers, two-digit, three-digit, two-digit, etc.). For example, for sequences 34 678 12 897 23 or 674 12 567 43 the answer will be 'Yes'.",
+        "ru": "Выяснить, является ли последовательность этих чисел такой, в которой двузначные и трехзначные числа чередуются(идут последовательно, двузначные, трехзначные, двузначные и т.д.). Например, для последовательностей 34 678 12 897 23 или 674 12 567 43 ответ будет «Да»."
+      },
       "handlerName": "isTwoDigitAndThreeDigitAreInTurn",
       "handlerParams": [{ "pos": 0, "label": "Cписок чисел" }]
     },
     {
       "id": "zerroArrayOuterNumsIsOne",
       "type": "generate",
-      "description": "Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице.",
+      "description": {
+        "en": "Fill the array with zeros, except for the first and last elements, which must be equal to one.",
+        "ru": "Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице."
+      },
       "handlerName": "zerroArrayOuterNumsIsOne",
       "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "seriesOfZerosAndOnes",
       "type": "generate",
-      "description": "Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля.",
+      "description": {
+        "en": "Fill the array with zeros and ones, with these values alternating starting from zero.",
+        "ru": "Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля."
+      },
       "handlerName": "seriesOfZerosAndOnes",
       "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "arrayOfOddNumbers",
       "type": "generate",
-      "description": "Заполнить массив последовательными нечетными числами, начиная с единицы",
+      "description": {
+        "en": "Fill an array with consecutive odd numbers, starting at one",
+        "ru": "Заполнить массив последовательными нечетными числами, начиная с единицы"
+      },
       "handlerName": "arrayOfOddNumbers",
       "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "arithmeticProgressionArr",
       "type": "generate",
-      "description": "Сформировать массив из элементов арифметической прогрессии с заданным первым элементом x и разностью d",
+      "description": {
+        "en": "Form an array of elements of an arithmetic progression with a given first element x and a difference d",
+        "ru": "Сформировать массив из элементов арифметической прогрессии с заданным первым элементом x и разностью d"
+      },
       "handlerName": "arithmeticProgressionArr",
       "handlerParams": [
         { "pos": 0, "label": "Длина массива" },
@@ -42,21 +57,30 @@
     {
       "id": "evenNumByIncreasing",
       "type": "generate",
-      "description": "Сформировать возрастающий массив из четных чисел.",
+      "description": {
+        "en": "Form an ascending array of even numbers.",
+        "ru": "Сформировать возрастающий массив из четных чисел."
+      },
       "handlerName": "evenNumByIncreasing",
       "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "numberDividedByThree",
       "type": "generate",
-      "description": "Сформировать убывающий массив из чисел, которые делятся на 3.",
+      "description": {
+        "en": "Form a decreasing array of numbers that are divisible by 3.",
+        "ru": "Сформировать убывающий массив из чисел, которые делятся на 3."
+      },
       "handlerName": "numberDividedByThree",
       "handlerParams": [{ "pos": 0, "label": "Начальное значение массива" }]
     },
     {
       "id": "fibArr",
       "type": "generate",
-      "description": "Создать массив из n первых чисел Фибоначчи.",
+      "description": {
+        "en": "Create an array of first n Fibonacci numbers.",
+        "ru": "Создать массив из n первых чисел Фибоначчи."
+      },
       "handlerName": "fibArr",
       "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
@@ -64,56 +88,80 @@
     {
       "id": "evenIsOneAndOddIsRemainderOfTheDivisionByFive",
       "type": "generate",
-      "description": "Создать массив, на четных местах в котором стоят единицы,а на нечетных местах - числа, равные остатку от деления своего номера на 5.",
+      "description": {
+        "en": "Create an array, in even places in which there are ones, and in odd places - numbers equal to the remainder of dividing your number by 5.",
+        "ru": "Создать массив, на четных местах в котором стоят единицы,а на нечетных местах - числа, равные остатку от деления своего номера на 5."
+      },
       "handlerName": "evenIsOneAndOddIsRemainderOfTheDivisionByFive",
       "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
     },
     {
       "id": "threeTimesSameNum",
       "type": "generate",
-      "description": "Создать массив, состоящий из трёх подряд идущих одинаковых элементов.",
+      "description": {
+        "en": "Create an array of three identical elements in a row.",
+        "ru": "Создать массив, состоящий из трёх подряд идущих одинаковых элементов."
+      },
       "handlerName": "threeTimesSameNum",
       "handlerParams": [{ "pos": 0, "label": "Последнее значение массива" }]
     },
     {
       "id": "palindromeArray",
       "type": "generate",
-      "description": "Создать массив, который одинаково читается как слева направо, так и справа налево.",
+      "description": {
+        "en": "Create an array that reads equally from left to right and from right to left.",
+        "ru": "Создать массив, который одинаково читается как слева направо, так и справа налево."
+      },
       "handlerName": "palindromeArray",
       "handlerParams": [{ "pos": 0, "label": "arrLength" }]
     },
     {
       "id": "twoUnitsOnRandomIndexes",
       "type": "generate",
-      "description": "Сформировать массив из случайных чисел, в которых ровно две единицы, стоящие на случайных позициях.",
+      "description": {
+        "en": "Form an array of random numbers with exactly two ones at random positions.",
+        "ru": "Сформировать массив из случайных чисел, в которых ровно две единицы, стоящие на случайных позициях."
+      },
       "handlerName": "twoUnitsOnRandomIndexes",
       "handlerParams": [{ "pos": 0, "label": "arrLength" }]
     },
     {
       "id": "zerosLessThenOnes",
       "type": "generate",
-      "description": "Заполните массив случайным образом нулями и единицами так, чтобы количество единиц было больше количества нулей.",
+      "description": {
+        "en": "Fill the array randomly with zeros and ones so that the number of ones is greater than the number of zeros.",
+        "ru": "Заполните массив случайным образом нулями и единицами так, чтобы количество единиц было больше количества нулей."
+      },
       "handlerName": "zerosLessThenOnes",
       "handlerParams": [{ "pos": 0, "label": "arrLength" }]
     },
     {
       "id": "arrToNineWithFixedAmount",
       "type": "generate",
-      "description": "Сформировать массив из случайных целых чисел от 0 до 9 , в котором единиц от 3 до 5 и двоек больше троек.",
+      "description": {
+        "en": "Form an array of random integers from 0 to 9, in which there are more ones from 3 to 5 and 2's more than 3's.",
+        "ru": "Сформировать массив из случайных целых чисел от 0 до 9 , в котором единиц от 3 до 5 и двоек больше троек."
+      },
       "handlerName": "arrToNineWithFixedAmount",
       "handlerParams": [{ "pos": 0, "label": "arrLength" }]
     },
     {
       "id": "oddAndEvenQuantityIsEqual",
       "type": "generate",
-      "description": "Создайте массив, в котором количество отрицательных чисел равно количеству положительных и положительные числа расположены на случайных местах в массиве.",
+      "description": {
+        "en": "Create an array where the number of negative numbers is equal to the number of positive numbers and the positive numbers are located at random places in the array.",
+        "ru": "Создайте массив, в котором количество отрицательных чисел равно количеству положительных и положительные числа расположены на случайных местах в массиве."
+      },
       "handlerName": "oddAndEvenQuantityIsEqual",
       "handlerParams": [{ "pos": 0, "label": "maxNumber" }]
     },
     {
       "id": "isNumInArr",
       "type": "find",
-      "description": "Определить, содержит ли массив данное число x",
+      "description": {
+        "en": "Determine if an array contains a given number x",
+        "ru": "Определить, содержит ли массив данное число x"
+      },
       "handlerName": "isNumInArr",
       "handlerParams": [
         { "pos": 0, "label": "Список чисел" },
@@ -123,56 +171,80 @@
     {
       "id": "quantityOfEvenNums",
       "type": "find",
-      "description": "Найти количество четных чисел в массиве.",
+      "description": {
+        "en": "Find the number of even numbers in an array.",
+        "ru": "Найти количество четных чисел в массиве."
+      },
       "handlerName": "quantityOfEvenNums",
       "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
     },
     {
       "id": "quantityOfNumsDivisibleByThreeButNotBySeven",
       "type": "find",
-      "description": "Найти количество чисел в массиве, которые делятся на 3, но не делятся на 7.",
+      "description": {
+        "en": "Find the number of numbers in an array that are divisible by 3 but not divisible by 7.",
+        "ru": "Найти количество чисел в массиве, которые делятся на 3, но не делятся на 7."
+      },
       "handlerName": "quantityOfNumsDivisibleByThreeButNotBySeven",
       "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
     },
     {
       "id": "divisibleByFirstElementOrLastWhitchMore",
       "type": "compare",
-      "description": "Определите, каких чисел в массиве больше: которые делятся на первый элемент массива или которые делятся на последний элемент массива.",
+      "description": {
+        "en": "Determine which numbers in the array are larger: which are divisible by the first element of the array, or which are divisible by the last element of the array.",
+        "ru": "Определите, каких чисел в массиве больше: которые делятся на первый элемент массива или которые делятся на последний элемент массива."
+      },
       "handlerName": "divisibleByFirstElementOrLastWhitchMore",
       "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
     },
     {
       "id": "sumAndProductOfNumsInArr",
       "type": "generate",
-      "description": "Найдите сумму и произведение элементов массива.",
+      "description": {
+        "en": "Find the sum and product of the array elements.",
+        "ru": "Найдите сумму и произведение элементов массива."
+      },
       "handlerName": "sumAndProductOfNumsInArr",
       "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
     },
     {
       "id": "sumOfOddNumsLessThanEleven",
       "type": "generate",
-      "description": "Найдите сумму нечетных чисел массива, которые не превосходят 11.",
+      "description": {
+        "en": "Find the sum of the odd numbers in the array that are at most 11.",
+        "ru": "Найдите сумму нечетных чисел массива, которые не превосходят 11."
+      },
       "handlerName": "sumOfOddNumsLessThanEleven",
       "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
     },
     {
       "id": "sumOfNumsBeforeEvenNum",
       "type": "generate",
-      "description": "Найдите сумму чисел массива, которые расположены до первого четного числа массива.Если четных чисел в массиве нет, то найти сумму всех чисел за исключением крайних.",
+      "description": {
+        "en": "Find the sum of the array numbers that are located before the first even number in the array. If there are no even numbers in the array, then find the sum of all numbers except for the extreme ones.",
+        "ru": "Найдите сумму чисел массива, которые расположены до первого четного числа массива.Если четных чисел в массиве нет, то найти сумму всех чисел за исключением крайних."
+      },
       "handlerName": "sumOfNumsBeforeEvenNum",
       "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
     },
     {
       "id": "sumOfNumsOnEvenIndexes",
       "type": "generate",
-      "description": "Найдите сумму чисел массива, которые стоят на четных местах.",
+      "description": {
+        "en": "Find the sum of the numbers in the array that are in even places.",
+        "ru": "Найдите сумму чисел массива, которые стоят на четных местах."
+      },
       "handlerName": "sumOfNumsOnEvenIndexes",
       "handlerParams": { "pos": 0, "label": "Список чисел" }
     },
     {
       "id": "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems",
       "type": "generate",
-      "description": "Найдите сумму чисел массива, которые стоят на нечетных местах и при этом превосходят сумму крайних элементов массива.",
+      "description": {
+        "en": "Find the sum of the numbers in the array that are in odd places and are greater than the sum of the outermost elements of the array.",
+        "ru": "Найдите сумму чисел массива, которые стоят на нечетных местах и при этом превосходят сумму крайних элементов массива."
+      },
       "handlerName": "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems",
       "handlerParams": { "pos": 0, "label": "Список чисел" }
     }
