@@ -1,10 +1,12 @@
 {
-  "headerItems": { "generate": "Генерация", "compare": "Сравнение" },
+  "headerItems": { "generate": "Генерировать", "compare": "Сравнивать" },
   "generatePage": {
-    "pageTitle": "Выберите условие генерации"
+    "title": "Задачи на генерацию",
+    "subTitle": "Выберите подходящее условие генерации"
   },
   "comparePage": {
-    "pageTitle": "Выберите условие сравнения"
+    "title": "Задачи на сравнение",
+    "subTitle": "Выберите подходящее условие сравнения"
   },
   "buttonsText": {
     "modal": {

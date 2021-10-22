@@ -12,9 +12,9 @@ function CollapseList({ type }) {
 
   return (
     <>
-      <Divider orientation="left">
+      {/* <Divider orientation="left">
         <Trans i18nKey={`${type}Page.pageTitle`} />
-      </Divider>
+      </Divider> */}
       <Collapse>
         {pageData.map((item) => {
           const { id, description, handlerName, handlerParams } = item;

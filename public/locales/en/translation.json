@@ -1,10 +1,12 @@
 {
-  "headerItems": { "generate": "Generators", "compare": "Compare" },
+  "headerItems": { "generate": "Generate", "compare": "Compare" },
   "generatePage": {
-    "pageTitle": "Select the generation condition"
+    "title": "Select the generation condition",
+    "subTitle": "Select the generation condition"
   },
   "comparePage": {
-    "pageTitle": "Select comparison option"
+    "title": "Select comparison option",
+    "subTitle": "Select comparison option"
   },
   "buttonsText": {
     "modal": {
