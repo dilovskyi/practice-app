@@ -10,15 +10,22 @@ export const TaskContext = createContext();
 
 function App() {
   const [dataTasks, setDataTask] = useState([]);
+  const [pageLang, setPageLang] = useState("en");
   const { i18n } = useTranslation();
 
-  const changeLaguage = (languale) => {
-    i18n.changeLanguage(languale);
+  const changeLaguage = (language) => {
+    setPageLang(language);
+    i18n.changeLanguage(language);
   };
+
+  useEffect(() => {
+    console.log("333");
+  }, [pageLang]);
 
   useEffect(() => {
     getData(`http://localhost:3000/tasks`).then((data) => {
       setDataTask(data);
+      console.log(data);
     });
   }, []);
 
