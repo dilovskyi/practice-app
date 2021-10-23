@@ -1,6 +1,9 @@
-import React from "react";
 import { Input } from "antd";
 
+// FieldDataEntry - Render the required number of parameter fields for the function
+// paramPos - Parameter index
+// paramLabel - Name of parameter
+// onChangeHandler - Concatenates Parameters into an Array by ParamPos(index)
 function FieldDataEntry({ paramPos, paramLabel, onChangeHandler }) {
   return (
     <>
@@ -9,7 +12,7 @@ function FieldDataEntry({ paramPos, paramLabel, onChangeHandler }) {
         <br />
         <Input
           type="text"
-          onChange={(event) => onChangeHandler(event, paramPos)}
+          onChange={(event) => onChangeHandler(+event.target.value, paramPos)}
         />
       </div>
     </>

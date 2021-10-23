@@ -1,10 +1,13 @@
 import { createContext, useState, useEffect } from "react";
-import AppHeader from "../AppHeader";
-import GeneratorsPage from "../GeneratorsPage";
-import SortingsPage from "../SortingsPage";
-import { getData } from "../../services/getData";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { getData } from "../../services/getData";
+import AppHeader from "../AppHeader";
+import HomePage from "../HomePage";
+import GeneratePage from "../GeneratePage";
+import ComparePage from "../ComparePage";
+import FindPage from "../FindPage";
+import SortPage from "../SortPage";
 
 export const TaskContext = createContext();
 export const LanguageContext = createContext();
@@ -23,7 +26,6 @@ function App() {
   useEffect(() => {
     getData(`http://localhost:3000/tasks`).then((data) => {
       setDataTask(data);
-      console.log(data);
     });
   }, []);
 
@@ -35,10 +37,19 @@ function App() {
             <AppHeader changeLangHandler={changeLaguage} />
             <Switch>
               <Route path="/generate">
-                <GeneratorsPage />
+                <GeneratePage />
               </Route>
               <Route path="/compare">
-                <SortingsPage />
+                <ComparePage />
+              </Route>
+              <Route path="/find">
+                <FindPage />
+              </Route>
+              <Route path="/sort">
+                <SortPage />
+              </Route>
+              <Route path="/">
+                <HomePage />
               </Route>
             </Switch>
           </LanguageContext.Provider>

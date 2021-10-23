@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Modal, Button } from "antd";
 import { Trans } from "react-i18next";
+import { Modal, Button } from "antd";
 import AreaDataEntry from "../AreaDataEntry";
 import ResultBaner from "../ResultBaner";
 
@@ -14,10 +14,11 @@ const ModalDataEntry = ({
   const [handlerResult, setHandlerResult] = useState();
   const [argumentsArr, setArgumentsArr] = useState([]);
 
-  const onChangeHandler = (event, pos) => {
+  // Combining parameters from each modal into an array
+  const combineTaskParams = (value, pos) => {
     setArgumentsArr((prevArr) => {
       const newArr = prevArr;
-      newArr[pos] = +event.target.value;
+      newArr[pos] = value;
       return newArr;
     });
   };
@@ -30,7 +31,8 @@ const ModalDataEntry = ({
     setIsModalVisible(false);
   };
 
-  const handleOk = () => {
+  // Run task handler
+  const handleTaskResult = () => {
     setHandlerResult(handlerFunction(...argumentsArr));
   };
 
@@ -40,13 +42,12 @@ const ModalDataEntry = ({
         <Trans i18nKey="buttonsText.modal.open" />
       </Button>
       <Modal
-        title={description}
         visible={isModalVisible}
+        title={description}
+        onOk={handleTaskResult}
         okText={<Trans i18nKey="buttonsText.modal.start" />}
-        onOk={handleOk}
-        cancelText={<Trans i18nKey="buttonsText.modal.cencel" />}
         onCancel={handleCancel}
-        destroyOnClose={true}
+        cancelText={<Trans i18nKey="buttonsText.modal.cencel" />}
       >
         {handlerParams.map((param, index) => {
           const { pos, label } = param;
@@ -55,7 +56,7 @@ const ModalDataEntry = ({
               key={index}
               paramPos={pos}
               paramLabel={label[pageLanguage]}
-              onChangeHandler={onChangeHandler}
+              onChangeHandler={combineTaskParams}
             />
           );
         })}

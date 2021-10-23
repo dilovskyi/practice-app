@@ -9,7 +9,7 @@
       },
       "handlerName": "isTwoDigitAndThreeDigitAreInTurn",
       "handlerParams": [
-        { "pos": 0, "label": { "en": "1", "ru": "Cписок чисел" } }
+        { "pos": 0, "label": { "en": "List of numbers", "ru": "Cписок чисел" } }
       ]
     },
     {
@@ -20,7 +20,9 @@
         "ru": "Заполнить массив нулями, кроме первого и последнего элементов, которые должны быть равны единице."
       },
       "handlerName": "zerroArrayOuterNumsIsOne",
-      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
     {
       "id": "seriesOfZerosAndOnes",
@@ -30,7 +32,9 @@
         "ru": "Заполнить массив нулями и единицами, при этом данные значения чередуются, начиная с нуля."
       },
       "handlerName": "seriesOfZerosAndOnes",
-      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
     {
       "id": "arrayOfOddNumbers",
@@ -40,7 +44,9 @@
         "ru": "Заполнить массив последовательными нечетными числами, начиная с единицы"
       },
       "handlerName": "arrayOfOddNumbers",
-      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
     {
       "id": "arithmeticProgressionArr",
@@ -51,9 +57,12 @@
       },
       "handlerName": "arithmeticProgressionArr",
       "handlerParams": [
-        { "pos": 0, "label": "Длина массива" },
-        { "pos": 1, "label": "Начальное значение" },
-        { "pos": 2, "label": "Разность" }
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } },
+        {
+          "pos": 1,
+          "label": { "en": "Initial value", "ru": "Начальное значение" }
+        },
+        { "pos": 2, "label": { "en": "Difference", "ru": "Разность" } }
       ]
     },
     {
@@ -64,7 +73,9 @@
         "ru": "Сформировать возрастающий массив из четных чисел."
       },
       "handlerName": "evenNumByIncreasing",
-      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
     {
       "id": "numberDividedByThree",
@@ -74,7 +85,12 @@
         "ru": "Сформировать убывающий массив из чисел, которые делятся на 3."
       },
       "handlerName": "numberDividedByThree",
-      "handlerParams": [{ "pos": 0, "label": "Начальное значение массива" }]
+      "handlerParams": [
+        {
+          "pos": 0,
+          "label": { "en": "Initial value", "ru": "Начальное значение" }
+        }
+      ]
     },
     {
       "id": "fibArr",
@@ -84,7 +100,9 @@
         "ru": "Создать массив из n первых чисел Фибоначчи."
       },
       "handlerName": "fibArr",
-      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
 
     {
@@ -95,7 +113,9 @@
         "ru": "Создать массив, на четных местах в котором стоят единицы,а на нечетных местах - числа, равные остатку от деления своего номера на 5."
       },
       "handlerName": "evenIsOneAndOddIsRemainderOfTheDivisionByFive",
-      "handlerParams": [{ "pos": 0, "label": "Длина массива" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
     {
       "id": "threeTimesSameNum",
@@ -105,7 +125,15 @@
         "ru": "Создать массив, состоящий из трёх подряд идущих одинаковых элементов."
       },
       "handlerName": "threeTimesSameNum",
-      "handlerParams": [{ "pos": 0, "label": "Последнее значение массива" }]
+      "handlerParams": [
+        {
+          "pos": 0,
+          "label": {
+            "en": "The last value of the array",
+            "ru": "Последнее значение массива"
+          }
+        }
+      ]
     },
     {
       "id": "palindromeArray",
@@ -115,7 +143,9 @@
         "ru": "Создать массив, который одинаково читается как слева направо, так и справа налево."
       },
       "handlerName": "palindromeArray",
-      "handlerParams": [{ "pos": 0, "label": "arrLength" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
     {
       "id": "twoUnitsOnRandomIndexes",
@@ -125,7 +155,9 @@
         "ru": "Сформировать массив из случайных чисел, в которых ровно две единицы, стоящие на случайных позициях."
       },
       "handlerName": "twoUnitsOnRandomIndexes",
-      "handlerParams": [{ "pos": 0, "label": "arrLength" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
     {
       "id": "zerosLessThenOnes",
@@ -135,7 +167,9 @@
         "ru": "Заполните массив случайным образом нулями и единицами так, чтобы количество единиц было больше количества нулей."
       },
       "handlerName": "zerosLessThenOnes",
-      "handlerParams": [{ "pos": 0, "label": "arrLength" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
     {
       "id": "arrToNineWithFixedAmount",
@@ -145,7 +179,9 @@
         "ru": "Сформировать массив из случайных целых чисел от 0 до 9 , в котором единиц от 3 до 5 и двоек больше троек."
       },
       "handlerName": "arrToNineWithFixedAmount",
-      "handlerParams": [{ "pos": 0, "label": "arrLength" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "Array length", "ru": "Длина массива" } }
+      ]
     },
     {
       "id": "oddAndEvenQuantityIsEqual",
@@ -155,7 +191,12 @@
         "ru": "Создайте массив, в котором количество отрицательных чисел равно количеству положительных и положительные числа расположены на случайных местах в массиве."
       },
       "handlerName": "oddAndEvenQuantityIsEqual",
-      "handlerParams": [{ "pos": 0, "label": "maxNumber" }]
+      "handlerParams": [
+        {
+          "pos": 0,
+          "label": { "en": "The largest number", "ru": "Наибольшее число" }
+        }
+      ]
     },
     {
       "id": "isNumInArr",
@@ -166,8 +207,14 @@
       },
       "handlerName": "isNumInArr",
       "handlerParams": [
-        { "pos": 0, "label": "Список чисел" },
-        { "pos": 1, "label": "Искомое число" }
+        {
+          "pos": 0,
+          "label": { "en": "List of numbers", "ru": "Список чисел" }
+        },
+        {
+          "pos": 1,
+          "label": { "en": "Searched number", "ru": "Искомое число" }
+        }
       ]
     },
     {
@@ -178,7 +225,9 @@
         "ru": "Найти количество четных чисел в массиве."
       },
       "handlerName": "quantityOfEvenNums",
-      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "List of numbers", "ru": "Список чисел" } }
+      ]
     },
     {
       "id": "quantityOfNumsDivisibleByThreeButNotBySeven",
@@ -188,7 +237,9 @@
         "ru": "Найти количество чисел в массиве, которые делятся на 3, но не делятся на 7."
       },
       "handlerName": "quantityOfNumsDivisibleByThreeButNotBySeven",
-      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "List of numbers", "ru": "Список чисел" } }
+      ]
     },
     {
       "id": "divisibleByFirstElementOrLastWhitchMore",
@@ -198,7 +249,9 @@
         "ru": "Определите, каких чисел в массиве больше: которые делятся на первый элемент массива или которые делятся на последний элемент массива."
       },
       "handlerName": "divisibleByFirstElementOrLastWhitchMore",
-      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "List of numbers", "ru": "Список чисел" } }
+      ]
     },
     {
       "id": "sumAndProductOfNumsInArr",
@@ -208,7 +261,9 @@
         "ru": "Найдите сумму и произведение элементов массива."
       },
       "handlerName": "sumAndProductOfNumsInArr",
-      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "List of numbers", "ru": "Список чисел" } }
+      ]
     },
     {
       "id": "sumOfOddNumsLessThanEleven",
@@ -218,7 +273,9 @@
         "ru": "Найдите сумму нечетных чисел массива, которые не превосходят 11."
       },
       "handlerName": "sumOfOddNumsLessThanEleven",
-      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "List of numbers", "ru": "Список чисел" } }
+      ]
     },
     {
       "id": "sumOfNumsBeforeEvenNum",
@@ -228,7 +285,9 @@
         "ru": "Найдите сумму чисел массива, которые расположены до первого четного числа массива.Если четных чисел в массиве нет, то найти сумму всех чисел за исключением крайних."
       },
       "handlerName": "sumOfNumsBeforeEvenNum",
-      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "List of numbers", "ru": "Список чисел" } }
+      ]
     },
     {
       "id": "sumOfNumsOnEvenIndexes",
@@ -238,7 +297,9 @@
         "ru": "Найдите сумму чисел массива, которые стоят на четных местах."
       },
       "handlerName": "sumOfNumsOnEvenIndexes",
-      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "List of numbers", "ru": "Список чисел" } }
+      ]
     },
     {
       "id": "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems",
@@ -248,7 +309,9 @@
         "ru": "Найдите сумму чисел массива, которые стоят на нечетных местах и при этом превосходят сумму крайних элементов массива."
       },
       "handlerName": "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems",
-      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "List of numbers", "ru": "Список чисел" } }
+      ]
     }
   ]
 }
