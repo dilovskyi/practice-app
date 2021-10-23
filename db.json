@@ -8,7 +8,9 @@
         "ru": "Выяснить, является ли последовательность этих чисел такой, в которой двузначные и трехзначные числа чередуются(идут последовательно, двузначные, трехзначные, двузначные и т.д.). Например, для последовательностей 34 678 12 897 23 или 674 12 567 43 ответ будет «Да»."
       },
       "handlerName": "isTwoDigitAndThreeDigitAreInTurn",
-      "handlerParams": [{ "pos": 0, "label": "Cписок чисел" }]
+      "handlerParams": [
+        { "pos": 0, "label": { "en": "1", "ru": "Cписок чисел" } }
+      ]
     },
     {
       "id": "zerroArrayOuterNumsIsOne",
@@ -236,7 +238,7 @@
         "ru": "Найдите сумму чисел массива, которые стоят на четных местах."
       },
       "handlerName": "sumOfNumsOnEvenIndexes",
-      "handlerParams": { "pos": 0, "label": "Список чисел" }
+      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
     },
     {
       "id": "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems",
@@ -246,7 +248,7 @@
         "ru": "Найдите сумму чисел массива, которые стоят на нечетных местах и при этом превосходят сумму крайних элементов массива."
       },
       "handlerName": "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems",
-      "handlerParams": { "pos": 0, "label": "Список чисел" }
+      "handlerParams": [{ "pos": 0, "label": "Список чисел" }]
     }
   ]
 }

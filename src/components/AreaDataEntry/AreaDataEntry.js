@@ -1,15 +1,16 @@
 import React from "react";
 import { Input } from "antd";
 
-function FieldDataEntry({ param, onChangeHandler }) {
-  const { pos, label } = param;
-
+function FieldDataEntry({ paramPos, paramLabel, onChangeHandler }) {
   return (
     <>
       <div>
-        {label}
+        {paramLabel}
         <br />
-        <Input type="text" onChange={(event) => onChangeHandler(event, pos)} />
+        <Input
+          type="text"
+          onChange={(event) => onChangeHandler(event, paramPos)}
+        />
       </div>
     </>
   );

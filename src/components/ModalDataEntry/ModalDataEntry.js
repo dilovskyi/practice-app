@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Modal, Button } from "antd";
+import { Trans } from "react-i18next";
 import AreaDataEntry from "../AreaDataEntry";
 import ResultBaner from "../ResultBaner";
-import { Trans } from "react-i18next";
 
-const ModalDataEntry = ({ description, handler, handlerParams }) => {
+const ModalDataEntry = ({
+  pageLanguage,
+  description,
+  handlerFunction,
+  handlerParams,
+}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [handlerResult, setHandlerResult] = useState();
   const [argumentsArr, setArgumentsArr] = useState([]);
@@ -26,7 +31,7 @@ const ModalDataEntry = ({ description, handler, handlerParams }) => {
   };
 
   const handleOk = () => {
-    setHandlerResult(handler(...argumentsArr));
+    setHandlerResult(handlerFunction(...argumentsArr));
   };
 
   return (
@@ -44,10 +49,12 @@ const ModalDataEntry = ({ description, handler, handlerParams }) => {
         destroyOnClose={true}
       >
         {handlerParams.map((param, index) => {
+          const { pos, label } = param;
           return (
             <AreaDataEntry
-              param={param}
               key={index}
+              paramPos={pos}
+              paramLabel={label[pageLanguage]}
               onChangeHandler={onChangeHandler}
             />
           );
