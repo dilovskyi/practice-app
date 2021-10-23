@@ -1,12 +1,30 @@
 {
-  "headerItems": { "generate": "Generate", "compare": "Compare" },
+  "headerItems": {
+    "home": "Home",
+    "generate": "Generate",
+    "compare": "Compare",
+    "find": "Find",
+    "sort": "Sort"
+  },
   "generatePage": {
-    "title": "Select the generation condition",
+    "title": " Generate new structure",
     "subTitle": "Select the generation condition"
   },
   "comparePage": {
-    "title": "Select comparison option",
+    "title": "Compare structures",
     "subTitle": "Select comparison option"
+  },
+  "findPage": {
+    "title": "Find something",
+    "subTitle": "Select comparison option"
+  },
+  "sortPage": {
+    "title": "This section is under active development",
+    "subTitle": "Everything will be but not immediately"
+  },
+  "homePage": {
+    "title": "Welcome!",
+    "subTitle": "This section is under active development"
   },
   "buttonsText": {
     "modal": {
