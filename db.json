@@ -267,7 +267,7 @@
     },
     {
       "id": "sumOfOddNumsLessThanEleven",
-      "type": "generate",
+      "type": "find",
       "description": {
         "en": "Find the sum of the odd numbers in the array that are at most 11.",
         "ru": "Найдите сумму нечетных чисел массива, которые не превосходят 11."
@@ -279,7 +279,7 @@
     },
     {
       "id": "sumOfNumsBeforeEvenNum",
-      "type": "generate",
+      "type": "find",
       "description": {
         "en": "Find the sum of the array numbers that are located before the first even number in the array. If there are no even numbers in the array, then find the sum of all numbers except for the extreme ones.",
         "ru": "Найдите сумму чисел массива, которые расположены до первого четного числа массива.Если четных чисел в массиве нет, то найти сумму всех чисел за исключением крайних."
@@ -291,7 +291,7 @@
     },
     {
       "id": "sumOfNumsOnEvenIndexes",
-      "type": "generate",
+      "type": "find",
       "description": {
         "en": "Find the sum of the numbers in the array that are in even places.",
         "ru": "Найдите сумму чисел массива, которые стоят на четных местах."
@@ -303,7 +303,7 @@
     },
     {
       "id": "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems",
-      "type": "generate",
+      "type": "find",
       "description": {
         "en": "Find the sum of the numbers in the array that are in odd places and are greater than the sum of the outermost elements of the array.",
         "ru": "Найдите сумму чисел массива, которые стоят на нечетных местах и при этом превосходят сумму крайних элементов массива."

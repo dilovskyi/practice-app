@@ -12,7 +12,7 @@ function FieldDataEntry({ paramPos, paramLabel, onChangeHandler }) {
         <br />
         <Input
           type="text"
-          onChange={(event) => onChangeHandler(+event.target.value, paramPos)}
+          onChange={(event) => onChangeHandler(event.target.value, paramPos)}
         />
       </div>
     </>

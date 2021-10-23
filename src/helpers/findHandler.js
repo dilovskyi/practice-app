@@ -1,4 +1,4 @@
-import { vanillaJsTasks } from "../vanillaJs";
+import * as vanillaJsTasks from "../vanillaJs";
 
 const findHandler = (handlerName) => {
   for (let key in vanillaJsTasks) {

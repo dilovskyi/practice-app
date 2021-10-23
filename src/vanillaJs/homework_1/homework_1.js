@@ -102,7 +102,7 @@ function evenNumByIncreasing(arrLength) {
 }
 
 // Сформировать убывающий массив из чисел, которые делятся на 3.
-function numberDividedByThree(_, startNum) {
+function numberDividedByThree(startNum) {
   const arr = [];
 
   for (let i = startNum; i > 0; i--) {

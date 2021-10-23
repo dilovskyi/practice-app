@@ -14,11 +14,24 @@ const ModalDataEntry = ({
   const [handlerResult, setHandlerResult] = useState();
   const [argumentsArr, setArgumentsArr] = useState([]);
 
+  function inputValueValidation(oldValue) {
+    // Create arr from string
+    let v = oldValue.split(",");
+    let numberV = v.map(Number);
+
+    //Если это один элемент - возвращаем цисло, а не массив
+    if (numberV.length === 1) {
+      return numberV[0];
+    }
+    return numberV;
+  }
+  console.log(handlerParams);
   // Combining parameters from each modal into an array
-  const combineTaskParams = (value, pos) => {
+  const combineParams = (value, pos) => {
+    const output = inputValueValidation(value);
     setArgumentsArr((prevArr) => {
       const newArr = prevArr;
-      newArr[pos] = value;
+      newArr[pos] = output;
       return newArr;
     });
   };
@@ -34,6 +47,7 @@ const ModalDataEntry = ({
   // Run task handler
   const handleTaskResult = () => {
     setHandlerResult(handlerFunction(...argumentsArr));
+    console.log(handlerFunction);
   };
 
   return (
@@ -56,10 +70,11 @@ const ModalDataEntry = ({
               key={index}
               paramPos={pos}
               paramLabel={label[pageLanguage]}
-              onChangeHandler={combineTaskParams}
+              onChangeHandler={combineParams}
             />
           );
         })}
+        {/* FIX: Обработать TRUE or FALSE */}
         {handlerResult ? <ResultBaner result={handlerResult} /> : null}
       </Modal>
     </>
