@@ -1,30 +1,47 @@
-import { useState } from "react";
-import { Menu } from "antd";
-import { SettingOutlined } from "@ant-design/icons";
-import { PageHeader } from "antd";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Trans } from "react-i18next";
-import { LANGUAGES } from "../../const/lang";
+import { Menu, PageHeader } from "antd";
+import { SettingOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
+import { LANGUAGES, PAGES } from "../../constants";
 import ChangeLanguage from "../ChangeLanguage";
 
 function AppHeader({ changeLangHandler }) {
-  const [current, setCurrent] = useState("generate");
-  const [pageType, setPageType] = useState("generate");
-  const menuItems = ["generate", "compare"];
+  // Get current location and set it to the useState like parameter on initialization
+  let location = useLocation();
+  let history = useHistory();
+  const [currentMenuItem, setCurrentMenuItem] = useState();
+  const [pageType, setPageType] = useState();
 
-  const toggleActiveItem = (e) => {
-    setCurrent(e.key);
+  function checkPath(path) {
+    if (path === "/") {
+      return "home";
+    }
+    const reg = new RegExp(/(?<=\/)([\s\S]+?)(?=\/|$)/gi);
+    return path.match(reg)[0];
+  }
+
+  useEffect(() => {
+    let path = checkPath(location.pathname);
+    setPageType(path);
+    setCurrentMenuItem(path);
+  }, [location]);
+
+  const handleSetCurrentMenuItem = (e) => {
+    setCurrentMenuItem(e.key);
   };
 
-  const setPageTypeHandler = (type) => {
-    setPageType(type);
+  const handleHistoryGoBack = () => {
+    history.goBack();
+    setCurrentMenuItem();
   };
 
   return (
     <>
       <PageHeader
         className="site-page-header"
-        onBack={() => window.history.back()}
+        onBack={handleHistoryGoBack}
         title={<Trans i18nKey={`${pageType}Page.title`} />}
         subTitle={<Trans i18nKey={`${pageType}Page.subTitle`} />}
         extra={
@@ -35,18 +52,15 @@ function AppHeader({ changeLangHandler }) {
         }
       >
         <Menu
-          onClick={toggleActiveItem}
-          selectedKeys={[current]}
+          onClick={handleSetCurrentMenuItem}
+          selectedKeys={[currentMenuItem]}
           mode="horizontal"
         >
-          {menuItems.map((itemName) => {
+          {PAGES.map(({ name, path }) => {
             return (
-              <Menu.Item key={itemName} icon={<SettingOutlined />}>
-                <Link
-                  to={`/${itemName}`}
-                  onClick={() => setPageTypeHandler(itemName)}
-                >
-                  <Trans i18nKey={`headerItems.${itemName}`} />
+              <Menu.Item key={name} icon={<SettingOutlined />}>
+                <Link to={path} onClick={() => setPageType(name)}>
+                  <Trans i18nKey={`headerItems.${name}`} />
                 </Link>
               </Menu.Item>
             );
