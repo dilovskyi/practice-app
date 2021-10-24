@@ -1,7 +1,13 @@
 import { createContext, useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { getData } from "../../services/getData";
+import { PAGE_PATH } from "../../constants";
 import AppHeader from "../AppHeader";
 import HomePage from "../HomePage";
 import GeneratePage from "../GeneratePage";
@@ -14,7 +20,7 @@ export const LanguageContext = createContext();
 
 function App() {
   const [dataTasks, setDataTask] = useState([]);
-  // Add getting information from cookies/storage
+  // TODO: Add getting information from cookies/storage
   const [pageLang, setPageLang] = useState("en");
   const { i18n } = useTranslation();
 
@@ -36,21 +42,12 @@ function App() {
           <LanguageContext.Provider value={pageLang}>
             <AppHeader changeLangHandler={changeLaguage} />
             <Switch>
-              <Route path="/generate">
-                <GeneratePage />
-              </Route>
-              <Route path="/compare">
-                <ComparePage />
-              </Route>
-              <Route path="/find">
-                <FindPage />
-              </Route>
-              <Route path="/sort">
-                <SortPage />
-              </Route>
-              <Route path="/">
-                <HomePage />
-              </Route>
+              <Route exact path={PAGE_PATH.home} component={HomePage} />
+              <Route path={PAGE_PATH.generate} component={GeneratePage} />
+              <Route path={PAGE_PATH.compare} component={ComparePage} />
+              <Route path={PAGE_PATH.find} component={FindPage} />
+              <Route path={PAGE_PATH.sort} component={SortPage} />
+              <Redirect to={PAGE_PATH.home} />
             </Switch>
           </LanguageContext.Provider>
         </TaskContext.Provider>
