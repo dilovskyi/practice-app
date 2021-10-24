@@ -6,6 +6,10 @@
     "find": "Find",
     "sort": "Sort"
   },
+  "homePage": {
+    "title": "Welcome!",
+    "subTitle": "This section is under active development"
+  },
   "generatePage": {
     "title": " Generate new structure",
     "subTitle": "Select the generation condition"
@@ -22,10 +26,7 @@
     "title": "This section is under active development",
     "subTitle": "Everything will be but not immediately"
   },
-  "homePage": {
-    "title": "Welcome!",
-    "subTitle": "This section is under active development"
-  },
+  "resultBaner": { "title": "Your result" },
   "buttonsText": {
     "modal": {
       "open": "Go",
