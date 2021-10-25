@@ -3,12 +3,21 @@ import { Trans } from "react-i18next";
 import { SmileOutlined } from "@ant-design/icons";
 
 function ResultBaner({ result }) {
+  const validateResult = (value) => {
+    if (Array.isArray(value)) {
+      return value.join(", ");
+    } else if (typeof value === "boolean") {
+      return value.toString();
+    }
+    return value;
+  };
+
   return (
     <>
       <Result
         icon={<SmileOutlined />}
         title={<Trans i18nKey="resultBaner.title" />}
-        extra={result}
+        extra={validateResult(result)}
       />
     </>
   );
