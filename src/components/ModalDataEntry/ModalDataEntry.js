@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Trans } from "react-i18next";
-import { Modal, Button } from "antd";
-import AreaDataEntry from "../AreaDataEntry";
+import { Form, Alert, Input, Modal, Button } from "antd";
 import ResultBaner from "../ResultBaner";
 
 const ModalDataEntry = ({
@@ -10,30 +9,52 @@ const ModalDataEntry = ({
   handlerFunction,
   handlerParams,
 }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [handlerResult, setHandlerResult] = useState();
+  const [form] = Form.useForm();
+  const [isModalVisible, setIsModalVisible] = useState(null);
+  const [handlerResult, setHandlerResult] = useState(null);
   const [argumentsArr, setArgumentsArr] = useState([]);
+  // TODO: Make a component controllable
+  const [inputValue, setInputValue] = useState(null);
+  const [isValueError, setIsValueError] = useState(null);
 
-  function inputValueValidation(oldValue) {
-    // Create arr from string
-    let v = oldValue.split(",");
-    let numberV = v.map(Number);
-
-    //Если это один элемент - возвращаем цисло, а не массив
-    if (numberV.length === 1) {
-      return numberV[0];
+  const validationHandler = (value) => {
+    const regExp = new RegExp(/[^\d|,\s]/g);
+    if (regExp.test(value)) {
+      const cleanValue = value.replace(/[^\d|,\s]/g, "");
+      setIsValueError(true);
+      setInputValue(cleanValue);
+      return cleanValue;
     }
-    return numberV;
+    setIsValueError(false);
+    return value;
+  };
+
+  function convertValueInNums(value) {
+    // Create arr of numbers from string
+    const argumentsArr = value.split(",");
+    const numberArgumentsArr = argumentsArr.map((item) => +item);
+    return numberArgumentsArr;
   }
-  console.log(handlerParams);
+
   // Combining parameters from each modal into an array
   const combineParams = (value, pos) => {
-    const output = inputValueValidation(value);
     setArgumentsArr((prevArr) => {
       const newArr = prevArr;
-      newArr[pos] = output;
+      newArr[pos] = value;
       return newArr;
     });
+  };
+
+  const inputOnChangeHandler = (value, pos) => {
+    const validatedValue = validationHandler(value);
+    let inputNumberValue = convertValueInNums(validatedValue);
+
+    // If input value was number (arrLenght or LastNumber) - set as number not array
+    if (inputNumberValue.length === 1) {
+      inputNumberValue = inputNumberValue[0];
+    }
+
+    combineParams(inputNumberValue, pos);
   };
 
   const showModal = () => {
@@ -47,7 +68,6 @@ const ModalDataEntry = ({
   // Run task handler
   const handleTaskResult = () => {
     setHandlerResult(handlerFunction(...argumentsArr));
-    console.log(handlerFunction);
   };
 
   return (
@@ -62,20 +82,34 @@ const ModalDataEntry = ({
         okText={<Trans i18nKey="buttonsText.modal.start" />}
         onCancel={handleCancel}
         cancelText={<Trans i18nKey="buttonsText.modal.cencel" />}
+        width={1000}
+        destroyOnClose="true"
       >
-        {handlerParams.map((param, index) => {
-          const { pos, label } = param;
-          return (
-            <AreaDataEntry
-              key={index}
-              paramPos={pos}
-              paramLabel={label[pageLanguage]}
-              onChangeHandler={combineParams}
-            />
-          );
-        })}
-        {/* FIX: Обработать TRUE or FALSE */}
-        {handlerResult ? <ResultBaner result={handlerResult} /> : null}
+        {isValueError ? (
+          <Alert
+            message={<Trans i18nKey="modalDataEntry.warning" />}
+            type="warning"
+            showIcon
+            banner
+            closable
+          />
+        ) : null}
+        <Form form={form} layout="vertical">
+          {handlerParams.map((param, index) => {
+            const { pos, label } = param;
+            return (
+              <Form.Item key={index} label={label[pageLanguage]}>
+                <Input
+                  type="text"
+                  onChange={(event) =>
+                    inputOnChangeHandler(event.target.value, pos)
+                  }
+                />
+              </Form.Item>
+            );
+          })}
+        </Form>
+        {handlerResult === null ? null : <ResultBaner result={handlerResult} />}
       </Modal>
     </>
   );

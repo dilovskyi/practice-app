@@ -26,6 +26,7 @@
     "title": "Данный раздел в активной разработке",
     "subTitle": "Все будет, но не сразу"
   },
+  "modalDataEntry": { "warning": "Используйте только цифры и запятые" },
   "resultBaner": { "title": "Ваш результат" },
   "buttonsText": {
     "modal": {

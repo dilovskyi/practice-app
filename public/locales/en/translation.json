@@ -26,6 +26,7 @@
     "title": "This section is under active development",
     "subTitle": "Everything will be but not immediately"
   },
+  "modalDataEntry": { "warning": "Use only numbers and commas" },
   "resultBaner": { "title": "Your result" },
   "buttonsText": {
     "modal": {
