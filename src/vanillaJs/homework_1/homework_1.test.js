@@ -58,7 +58,7 @@ it("Even number array by increasing", () => {
 });
 
 it("Numbers in descending order, which are divided by 3", () => {
-  expect(numberDividedByThree("", 10)).toEqual([9, 6, 3]);
+  expect(numberDividedByThree(10)).toEqual([9, 6, 3]);
 });
 
 it("Array of Fibonacci numbers", () => {
