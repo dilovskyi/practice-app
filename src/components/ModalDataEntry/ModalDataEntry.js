@@ -84,22 +84,12 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
         width={1000}
         destroyOnClose="true"
       >
-        {isValueError ? (
-          <Alert
-            message={<Trans i18nKey="modalDataEntry.warning" />}
-            type="warning"
-            showIcon
-            banner
-            closable
-          />
-        ) : null}
         <Form form={form} layout="vertical">
           {handlerParams.map((param, index) => {
             const { pos, label } = param;
             return (
               <Form.Item key={index} label={label[pageLanguage]}>
                 <Input
-                  value={inputValue}
                   type="text"
                   onChange={(event) =>
                     inputOnChangeHandler(event.target.value, pos)
@@ -109,6 +99,15 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
             );
           })}
         </Form>
+        {isValueError ? (
+          <Alert
+            message={<Trans i18nKey="modalDataEntry.warning" />}
+            type="warning"
+            showIcon
+            banner
+            closable
+          />
+        ) : null}
         {handlerResult === null ? null : <ResultBaner result={handlerResult} />}
       </Modal>
     </>
