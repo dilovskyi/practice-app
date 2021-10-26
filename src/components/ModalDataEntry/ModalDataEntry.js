@@ -8,22 +8,23 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
   const [isModalVisible, setIsModalVisible] = useState(null);
   const [handlerResult, setHandlerResult] = useState(null);
   const [argumentsArr, setArgumentsArr] = useState([]);
-  // TODO: Make a component controllable
   const [inputValue, setInputValue] = useState(null);
   const [isValueError, setIsValueError] = useState(null);
   const pageLanguage = useContext(LanguageContext);
   const [form] = Form.useForm();
 
   const validationHandler = (value) => {
+    let isError = false;
+    let outPutValue = value;
     const regExp = new RegExp(/[^\d|,\s]/g);
+
     if (regExp.test(value)) {
-      const cleanValue = value.replace(regExp, "");
-      setIsValueError(true);
-      setInputValue(cleanValue);
-      return cleanValue;
+      isError = true;
+      outPutValue = value.replace(regExp, "");
     }
-    setIsValueError(false);
-    return value;
+    setIsValueError(isError);
+    setInputValue(outPutValue);
+    return outPutValue;
   };
 
   function convertValueInNums(value) {
@@ -50,7 +51,6 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
     if (inputNumberValue.length === 1) {
       inputNumberValue = inputNumberValue[0];
     }
-
     combineParams(inputNumberValue, pos);
   };
 
@@ -77,6 +77,7 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
         visible={isModalVisible}
         title={description}
         onOk={handleTaskResult}
+        okButtonProps={{ disabled: isValueError }}
         okText={<Trans i18nKey="buttonsText.modal.start" />}
         onCancel={handleCancel}
         cancelText={<Trans i18nKey="buttonsText.modal.cencel" />}
@@ -98,6 +99,7 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
             return (
               <Form.Item key={index} label={label[pageLanguage]}>
                 <Input
+                  value={inputValue}
                   type="text"
                   onChange={(event) =>
                     inputOnChangeHandler(event.target.value, pos)
