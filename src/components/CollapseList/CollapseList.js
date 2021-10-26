@@ -1,7 +1,7 @@
 import * as vanillaJsTasks from "../../vanillaJs";
 import { useContext } from "react";
 import { Collapse, Space, Empty } from "antd";
-import { TaskContext, LanguageContext } from "../App/App";
+import { TaskDataContext, LanguageContext } from "../App";
 import ModalDataEntry from "../ModalDataEntry";
 const { Panel } = Collapse;
 
@@ -21,7 +21,7 @@ function getTasksByType(dataTasks, type) {
 function CollapseList({ type }) {
   const pageLanguage = useContext(LanguageContext);
   // Get all data
-  const dataTasks = useContext(TaskContext);
+  const dataTasks = useContext(TaskDataContext);
   // Get filtered data by page type
   const pageData = getTasksByType(dataTasks, type);
 
@@ -37,7 +37,6 @@ function CollapseList({ type }) {
               <Panel header={handlerName} key={id}>
                 <Space size={"middle"}>
                   <ModalDataEntry
-                    pageLanguage={pageLanguage}
                     description={description[pageLanguage]}
                     handlerFunction={findHandler(handlerName)}
                     handlerParams={handlerParams}

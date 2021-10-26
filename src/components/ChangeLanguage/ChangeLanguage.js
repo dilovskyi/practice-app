@@ -1,16 +1,21 @@
+import { useContext } from "react";
 import { Select } from "antd";
 import { Trans } from "react-i18next";
+import { LANGUAGES } from "../../constants";
+import { LanguageContext, ChangeLaguageHandlerContext } from "../App";
 const { Option } = Select;
 
-function ChangeLanguage({ languages, changeLangHandler }) {
+function ChangeLanguage() {
+  const pageLanguage = useContext(LanguageContext);
+  const changeLaguageHandler = useContext(ChangeLaguageHandlerContext);
   return (
     <>
       <Select
-        defaultValue="en"
+        defaultValue={pageLanguage}
         style={{ width: 120 }}
-        onChange={changeLangHandler}
+        onChange={changeLaguageHandler}
       >
-        {languages.map((langName, index) => {
+        {LANGUAGES.map((langName, index) => {
           return (
             <Option key={index} value={langName}>
               {<Trans i18nKey={`buttonsText.changeLang.${langName}`} />}

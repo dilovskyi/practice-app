@@ -4,10 +4,10 @@ import { Menu, PageHeader } from "antd";
 import { SettingOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { useLocation, useHistory } from "react-router-dom";
-import { LANGUAGES, PAGES } from "../../constants";
+import { PAGES } from "../../constants";
 import ChangeLanguage from "../ChangeLanguage";
 
-function AppHeader({ changeLangHandler }) {
+function AppHeader() {
   // Get current location and set it to the useState like parameter on initialization
   let location = useLocation();
   let history = useHistory();
@@ -44,12 +44,7 @@ function AppHeader({ changeLangHandler }) {
         onBack={handleHistoryGoBack}
         title={<Trans i18nKey={`${pageType}Page.title`} />}
         subTitle={<Trans i18nKey={`${pageType}Page.subTitle`} />}
-        extra={
-          <ChangeLanguage
-            languages={LANGUAGES}
-            changeLangHandler={changeLangHandler}
-          />
-        }
+        extra={<ChangeLanguage />}
       >
         <Menu
           onClick={handleSetCurrentMenuItem}

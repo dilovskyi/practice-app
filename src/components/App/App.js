@@ -5,6 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import i18next from "../../i18n";
 import { useTranslation } from "react-i18next";
 import { getData } from "../../services/getData";
 import { PAGE_PATH } from "../../constants";
@@ -15,16 +16,16 @@ import ComparePage from "../ComparePage";
 import FindPage from "../FindPage";
 import SortPage from "../SortPage";
 
-export const TaskContext = createContext();
+export const TaskDataContext = createContext();
 export const LanguageContext = createContext();
+export const ChangeLaguageHandlerContext = createContext();
 
 function App() {
-  const [dataTasks, setDataTask] = useState([]);
-  // TODO: Add getting information from cookies/storage
-  const [pageLang, setPageLang] = useState("en");
   const { i18n } = useTranslation();
+  const [pageLang, setPageLang] = useState(i18next.language);
+  const [dataTasks, setDataTask] = useState([]);
 
-  const changeLaguage = (language) => {
+  const changeLaguageHandler = (language) => {
     i18n.changeLanguage(language);
     setPageLang(language);
   };
@@ -38,9 +39,11 @@ function App() {
   return (
     <>
       <Router>
-        <TaskContext.Provider value={dataTasks}>
-          <LanguageContext.Provider value={pageLang}>
-            <AppHeader changeLangHandler={changeLaguage} />
+        <LanguageContext.Provider value={pageLang}>
+          <ChangeLaguageHandlerContext.Provider value={changeLaguageHandler}>
+            <AppHeader />
+          </ChangeLaguageHandlerContext.Provider>
+          <TaskDataContext.Provider value={dataTasks}>
             <Switch>
               <Route exact path={PAGE_PATH.home} component={HomePage} />
               <Route path={PAGE_PATH.generate} component={GeneratePage} />
@@ -49,8 +52,8 @@ function App() {
               <Route path={PAGE_PATH.sort} component={SortPage} />
               <Redirect to={PAGE_PATH.home} />
             </Switch>
-          </LanguageContext.Provider>
-        </TaskContext.Provider>
+          </TaskDataContext.Provider>
+        </LanguageContext.Provider>
       </Router>
     </>
   );

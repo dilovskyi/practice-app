@@ -1,26 +1,23 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Trans } from "react-i18next";
 import { Form, Alert, Input, Modal, Button } from "antd";
+import { LanguageContext } from "../App";
 import ResultBaner from "../ResultBaner";
 
-const ModalDataEntry = ({
-  pageLanguage,
-  description,
-  handlerFunction,
-  handlerParams,
-}) => {
-  const [form] = Form.useForm();
+const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
   const [isModalVisible, setIsModalVisible] = useState(null);
   const [handlerResult, setHandlerResult] = useState(null);
   const [argumentsArr, setArgumentsArr] = useState([]);
   // TODO: Make a component controllable
   const [inputValue, setInputValue] = useState(null);
   const [isValueError, setIsValueError] = useState(null);
+  const pageLanguage = useContext(LanguageContext);
+  const [form] = Form.useForm();
 
   const validationHandler = (value) => {
     const regExp = new RegExp(/[^\d|,\s]/g);
     if (regExp.test(value)) {
-      const cleanValue = value.replace(/[^\d|,\s]/g, "");
+      const cleanValue = value.replace(regExp, "");
       setIsValueError(true);
       setInputValue(cleanValue);
       return cleanValue;
@@ -63,6 +60,7 @@ const ModalDataEntry = ({
 
   const handleCancel = () => {
     setIsModalVisible(false);
+    setIsValueError(false);
   };
 
   // Run task handler
