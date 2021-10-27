@@ -115,5 +115,23 @@ List.prototype.removeByIndex = function (index) {
   rebuildIndexes(this);
 };
 
+List.prototype.removeByValue = function (value) {
+  let prev = null;
+  let current = this.head;
+
+  if (current.value === value) {
+    current = current.next;
+  } else {
+    while (current) {
+      if (current.value === value) {
+        prev.next = current.next;
+      }
+      prev = current;
+      current = current.next;
+    }
+  }
+  rebuildIndexes(this);
+};
+
 const list = new List();
 console.log(JSON.stringify(list, null, "\t"));
