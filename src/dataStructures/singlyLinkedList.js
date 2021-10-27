@@ -180,5 +180,49 @@ List.prototype.findByValue = function (value) {
   return undefined;
 };
 
+List.prototype.mergeWithList = function (donorHead) {
+  let parentHead = this.head;
+
+  if (!parentHead) {
+    return donorHead;
+  } else if (!donorHead) {
+    return parentHead;
+  }
+
+  let mergedHead = null;
+  if (parentHead.data <= donorHead.data) {
+    mergedHead = parentHead;
+    parentHead = parentHead.next;
+  } else {
+    mergedHead = donorHead;
+    donorHead = donorHead.next;
+  }
+
+  let mergedTail = mergedHead;
+
+  while (parentHead && donorHead) {
+    let temp = null;
+    if (parentHead.data <= donorHead.data) {
+      temp = parentHead;
+      parentHead = parentHead.next;
+    } else {
+      temp = donorHead;
+      donorHead = donorHead.next;
+    }
+
+    mergedTail.next = temp;
+    mergedTail = temp;
+  }
+
+  if (parentHead) {
+    mergedTail.next = parentHead;
+  } else if (donorHead) {
+    mergedTail.next = donorHead;
+  }
+
+  return mergedHead;
+};
+
 const list = new List();
-console.log(JSON.stringify(list, null, "\t"));
+const list2 = new List();
+console.log(JSON.stringify(list.mergeWithList(list2.head), null, "\t"));
