@@ -79,7 +79,7 @@ List.prototype.addByIndex = function (index, value) {
   let current = this.head;
   let prev = null;
 
-  if (current.indexindex === index) {
+  if (current.index === index) {
     this.head = node;
     node.next = current;
   } else {
@@ -166,6 +166,18 @@ List.prototype.printBackOrder = function () {
     console.log(backOrderCurrent);
     backOrderCurrent = backOrderCurrent.next;
   }
+};
+
+List.prototype.findByValue = function (value) {
+  let current = this.head;
+
+  while (current) {
+    if (current.value === value) {
+      return current.value;
+    }
+    current = current.next;
+  }
+  return undefined;
 };
 
 const list = new List();
