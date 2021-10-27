@@ -133,5 +133,40 @@ List.prototype.removeByValue = function (value) {
   rebuildIndexes(this);
 };
 
+List.prototype.print = function () {
+  let current = this.head;
+
+  while (current) {
+    console.log(current);
+    current = current.next;
+  }
+};
+
+List.prototype.printBackOrder = function () {
+  let backOrderList = new List();
+  let originCurrent = this.head;
+
+  while (originCurrent) {
+    let node = new Node(originCurrent.value);
+    node.index = originCurrent.index;
+
+    if (!backOrderList.head) {
+      backOrderList.head = node;
+    } else {
+      let prevHead = backOrderList.head;
+      backOrderList.head = node;
+      backOrderList.head.next = prevHead;
+    }
+    originCurrent = originCurrent.next;
+  }
+
+  let backOrderCurrent = backOrderList.head;
+
+  while (backOrderCurrent) {
+    console.log(backOrderCurrent);
+    backOrderCurrent = backOrderCurrent.next;
+  }
+};
+
 const list = new List();
 console.log(JSON.stringify(list, null, "\t"));
