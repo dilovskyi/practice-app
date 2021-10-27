@@ -1,4 +1,3 @@
-// Prev value
 function List() {
   this.head = null;
 }
@@ -71,6 +70,48 @@ List.prototype.shift = function () {
   }
   let newHead = this.head.next;
   this.head = newHead;
+  rebuildIndexes(this);
+};
+
+// Add only by existing index
+List.prototype.addByIndex = function (index, value) {
+  let node = new Node(value);
+  let current = this.head;
+  let prev = null;
+
+  if (current.indexindex === index) {
+    this.head = node;
+    node.next = current;
+  } else {
+    while (current) {
+      if (current.index === index) {
+        prev.next = node;
+        node.next = current;
+      }
+      prev = current;
+      current = current.next;
+    }
+  }
+
+  rebuildIndexes(this);
+};
+
+List.prototype.removeByIndex = function (index) {
+  let current = this.head;
+  let prev = null;
+
+  if (current.index === index) {
+    this.head = this.head.next;
+  } else {
+    while (current) {
+      if (current.index === index) {
+        prev.next = current.next;
+      }
+      prev = current;
+      current = current.next;
+    }
+  }
+
   rebuildIndexes(this);
 };
 
