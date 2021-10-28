@@ -168,10 +168,10 @@ List.prototype.printBackOrder = function () {
 
 List.prototype.findByValue = function (value) {
   let current = this.head;
-
+  setIndexes(this);
   while (current) {
     if (current.value === value) {
-      return current.value;
+      return current.index;
     }
     current = current.next;
   }
@@ -220,7 +220,3 @@ List.prototype.mergeWithList = function (donorHead) {
 
   return mergedHead;
 };
-
-const list = new List();
-const list2 = new List();
-console.log(JSON.stringify(list.mergeWithList(list2.head), null, "\t"));
