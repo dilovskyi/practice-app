@@ -4,11 +4,10 @@ function List() {
 
 function Node(value) {
   this.value = value;
-  this.index = 0;
   this.next = null;
 }
 
-function rebuildIndexes(list) {
+function setIndexes(list) {
   let currentElem = list.head;
   let indexCounter = 0;
 
@@ -36,7 +35,6 @@ List.prototype.push = function (value) {
     }
     current.next = node;
   }
-  rebuildIndexes(this);
 };
 
 List.prototype.pop = function () {
@@ -54,14 +52,12 @@ List.prototype.pop = function () {
   }
 
   prev.next = null;
-  rebuildIndexes(this);
 };
 
 List.prototype.unshift = function (value) {
   const node = new Node(value);
   node.next = this.head;
   this.head = node;
-  rebuildIndexes(this);
 };
 
 List.prototype.shift = function () {
@@ -70,7 +66,6 @@ List.prototype.shift = function () {
   }
   let newHead = this.head.next;
   this.head = newHead;
-  rebuildIndexes(this);
 };
 
 // Add only by existing index
@@ -78,6 +73,8 @@ List.prototype.addByIndex = function (index, value) {
   let node = new Node(value);
   let current = this.head;
   let prev = null;
+
+  setIndexes(this);
 
   if (current.index === index) {
     this.head = node;
@@ -92,13 +89,13 @@ List.prototype.addByIndex = function (index, value) {
       current = current.next;
     }
   }
-
-  rebuildIndexes(this);
 };
 
 List.prototype.removeByIndex = function (index) {
   let current = this.head;
   let prev = null;
+
+  setIndexes(this);
 
   if (current.index === index) {
     this.head = this.head.next;
@@ -111,8 +108,6 @@ List.prototype.removeByIndex = function (index) {
       current = current.next;
     }
   }
-
-  rebuildIndexes(this);
 };
 
 List.prototype.removeByValue = function (value) {
@@ -130,7 +125,6 @@ List.prototype.removeByValue = function (value) {
       current = current.next;
     }
   }
-  rebuildIndexes(this);
 };
 
 List.prototype.print = function () {
