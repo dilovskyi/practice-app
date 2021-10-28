@@ -220,3 +220,47 @@ List.prototype.mergeWithList = function (donorHead) {
 
   return mergedHead;
 };
+
+List.prototype.insertValueByIndex = function (index, value) {
+  let current = this.head;
+  setIndexes(this);
+
+  while (current) {
+    if (current.index === index) {
+      current.value = value;
+      return;
+    }
+    current = current.next;
+  }
+  return undefined;
+};
+
+List.prototype.insertListByIndex = function (index, listHead) {
+  let prevent = null;
+  let current = this.head;
+  setIndexes(this);
+
+  // Find tail in inserting list
+  let insertedListCurrent = listHead;
+  while (insertedListCurrent) {
+    if (!insertedListCurrent.next) {
+      break;
+    }
+    insertedListCurrent = insertedListCurrent.next;
+  }
+
+  if (index === 0) {
+    this.head = listHead;
+    insertedListCurrent.next = current;
+    return;
+  }
+
+  while (current) {
+    if (current.index === index) {
+      prevent.next = listHead;
+      insertedListCurrent.next = current;
+    }
+    prevent = current;
+    current = current.next;
+  }
+};
