@@ -129,16 +129,19 @@ List.prototype.removeByValue = function (value) {
 
 List.prototype.print = function () {
   let current = this.head;
+  let string = "";
 
   while (current) {
-    console.log(current);
+    string += JSON.stringify(current);
     current = current.next;
   }
+  return string;
 };
 
 List.prototype.printBackOrder = function () {
   let backOrderList = new List();
   let originCurrent = this.head;
+  let string = "";
 
   while (originCurrent) {
     let node = new Node(originCurrent.value);
@@ -157,9 +160,10 @@ List.prototype.printBackOrder = function () {
   let backOrderCurrent = backOrderList.head;
 
   while (backOrderCurrent) {
-    console.log(backOrderCurrent);
+    string += JSON.stringify(backOrderCurrent);
     backOrderCurrent = backOrderCurrent.next;
   }
+  return string;
 };
 
 List.prototype.findByValue = function (value) {
