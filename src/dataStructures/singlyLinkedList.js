@@ -115,7 +115,7 @@ List.prototype.removeByValue = function (value) {
   let current = this.head;
 
   if (current.value === value) {
-    current = current.next;
+    this.head = current.next;
   } else {
     while (current) {
       if (current.value === value) {
