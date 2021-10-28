@@ -1,55 +1,77 @@
-function ListNode(value) {
-  this.head = this;
-  this.next = null;
-  this.prev = null;
-  this.value = value;
+function LinkedList() {
+  this.head = null;
+  this.tail = null;
 }
 
-ListNode.prototype.getLast = function () {
-  let current = this.head;
+function Node(value, prev = null, next = null) {
+  this.value = value;
+  this.prev = prev;
+  this.next = next;
+}
 
-  while (current.next) {
-    current = current.next;
+LinkedList.prototype.setIndexes = function () {
+  let currentElem = this.getFirst();
+  let indexCounter = 0;
+
+  while (currentElem) {
+    currentElem.index = indexCounter++;
+    currentElem = currentElem.next;
+  }
+};
+
+LinkedList.prototype.push = function (value) {
+  const newNode = new Node(value, this.head);
+
+  if (this.tail) {
+    this.tail.next = newNode;
   }
 
-  return current;
+  newNode.prev = this.tail;
+  this.tail = newNode;
+
+  if (!this.head) {
+    this.head = newNode;
+  }
 };
 
-ListNode.prototype.push = function (value) {
-  let last = this.getLast();
-
-  let node = new ListNode(value);
-  last.next = node;
-  node.prev = last;
-};
-
-ListNode.prototype.pop = function () {
-  let last = this.getLast();
-
-  if (last === this.head) {
-    throw new Error("Can not delete this.head");
+LinkedList.prototype.pop = function () {
+  if (!this.tail) {
+    return null;
   }
 
-  let beforeLast = last.prev;
-  beforeLast.next = null;
-  last.prev = null;
+  if (this.tail.previous) {
+    this.tail = this.tail.previous;
+    this.tail.next = null;
+  } else {
+    this.head = null;
+    this.tail = null;
+  }
 };
 
-ListNode.prototype.unshift = function (value) {
-  let node = new ListNode(value);
-  this.head.prev = node;
-  node.next = this.head;
-  this.head = node;
-};
+LinkedList.prototype.unshift = function (value) {
+  const newNode = new Node(value, this.head);
 
-ListNode.prototype.shift = function () {
-  let beforeHead = this.head.next;
-
-  if (!beforeHead) {
-    throw new Error("Can not delete this.head");
+  if (this.head) {
+    this.head.prev = newNode;
   }
 
-  beforeHead.prev = null;
-  this.head.next = null;
-  this.head = beforeHead;
+  this.head = newNode;
+
+  if (!this.tail) {
+    this.tail = newNode;
+  }
+};
+
+LinkedList.prototype.shift = function () {
+  if (!this.head) {
+    return null;
+  }
+
+  if (this.head.next) {
+    this.head = this.head.next;
+    this.head.previous = null;
+  } else {
+    this.head = null;
+    this.tail = null;
+  }
 };
