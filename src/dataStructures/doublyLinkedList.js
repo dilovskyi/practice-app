@@ -74,3 +74,37 @@ LinkedList.prototype.shift = function () {
     this.tail = null;
   }
 };
+
+LinkedList.prototype.addByIndex = function (index, value) {
+  this.setIndexes();
+
+  if (index === this.head.index) {
+    const newNode = new Node(value, null, this.head);
+    this.head.prev = newNode;
+    this.head = newNode;
+    return this;
+  } else if (index === this.tail.index) {
+    const newNode = new Node(value, this.tail);
+    this.tail.next = newNode;
+    this.tail = newNode;
+    return this;
+  } else {
+    // Get Node on index
+    let nodeOnIndex = null;
+    let current = this.head.next;
+    while (current) {
+      if (current.index === index) {
+        nodeOnIndex = current;
+      }
+      current = current.next;
+    }
+
+    // If nodeOnIndex exist insert newNode
+    if (nodeOnIndex) {
+      const beforeNewNode = nodeOnIndex.prev;
+      const newNode = new Node(value, beforeNewNode, nodeOnIndex);
+      beforeNewNode.next = newNode;
+      nodeOnIndex.prev = newNode;
+    }
+  }
+};
