@@ -165,7 +165,7 @@ LinkedList.prototype.print = function (viewType = "normal") {
     if (node.next) {
       objString += `next:${getNext(node.next)},`;
     } else {
-      objString += `next:${node.next},`;
+      objString += `next:null,`;
     }
 
     return `{${objString}}`;
@@ -180,7 +180,7 @@ LinkedList.prototype.print = function (viewType = "normal") {
     if (node.prev) {
       objString += `prev:${getPrev(node.prev)},`;
     } else {
-      objString += `prev:${node.prev},`;
+      objString += `prev:null,`;
     }
 
     return `{${objString}}`;
@@ -196,9 +196,9 @@ LinkedList.prototype.print = function (viewType = "normal") {
         getFullList(startNode.next);
       }
       // Add to main string
-      mainString += `,\n{value:${startNode.value},prev:${getPrev(
+      mainString += `{value:${startNode.value},prev:${getPrev(
         startNode.prev
-      )},next:${getNext(startNode.next)}}`;
+      )},next:${getNext(startNode.next)}},\n`;
 
       if (viewType === "normal") {
         getFullList(startNode.next);
@@ -207,4 +207,32 @@ LinkedList.prototype.print = function (viewType = "normal") {
     return mainString;
   }
   return getFullList(this.head);
+};
+
+LinkedList.prototype.simplePrint = function () {
+  let current = this.head;
+
+  let getSiblings = (listItem) => {
+    let siblingSrting = "";
+    if (listItem.prev) {
+      siblingSrting += "prev:" + current.prev.value + ",";
+    } else {
+      siblingSrting += "prev:null,";
+    }
+
+    if (listItem.next) {
+      siblingSrting += "next:" + current.next.value + ",";
+    } else {
+      siblingSrting += "next:null,";
+    }
+    return siblingSrting;
+  };
+
+  let mainSting = "";
+  while (current) {
+    mainSting +=
+      "{" + getSiblings(current) + "currentValue:" + current.value + "}" + ",";
+    current = current.next;
+  }
+  return mainSting;
 };
