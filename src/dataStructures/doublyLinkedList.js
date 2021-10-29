@@ -10,7 +10,7 @@ function Node(value, prev = null, next = null) {
 }
 
 LinkedList.prototype.setIndexes = function () {
-  let currentElem = this.getFirst();
+  let currentElem = this.head;
   let indexCounter = 0;
 
   while (currentElem) {
@@ -20,13 +20,12 @@ LinkedList.prototype.setIndexes = function () {
 };
 
 LinkedList.prototype.push = function (value) {
-  const newNode = new Node(value, this.head);
+  const newNode = new Node(value, this.tail);
 
   if (this.tail) {
     this.tail.next = newNode;
   }
 
-  newNode.prev = this.tail;
   this.tail = newNode;
 
   if (!this.head) {
@@ -39,8 +38,8 @@ LinkedList.prototype.pop = function () {
     return null;
   }
 
-  if (this.tail.previous) {
-    this.tail = this.tail.previous;
+  if (this.tail.prev) {
+    this.tail = this.tail.prev;
     this.tail.next = null;
   } else {
     this.head = null;
@@ -49,7 +48,7 @@ LinkedList.prototype.pop = function () {
 };
 
 LinkedList.prototype.unshift = function (value) {
-  const newNode = new Node(value, this.head);
+  const newNode = new Node(value, null, this.head);
 
   if (this.head) {
     this.head.prev = newNode;
