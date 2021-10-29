@@ -128,42 +128,43 @@ List.prototype.removeByValue = function (value) {
 };
 
 List.prototype.print = function () {
-  let current = this.head;
-  let string = "";
+  function recursion(current) {
+    let objString = `value:${current.value},`;
 
-  while (current) {
-    string += JSON.stringify(current);
-    current = current.next;
+    if (current.next) {
+      objString += `next:${recursion(current.next)},`;
+    } else {
+      objString += `next:${current.next},`;
+    }
+
+    return `{${objString}}`;
   }
-  return string;
+
+  return recursion(this.head);
 };
 
 List.prototype.printBackOrder = function () {
-  let backOrderList = new List();
-  let originCurrent = this.head;
-  let string = "";
+  let tail = null;
+  let current = this.head;
 
-  while (originCurrent) {
-    let node = new Node(originCurrent.value);
-    node.index = originCurrent.index;
+  while (current) {
+    tail = current;
+    current = current.next;
+  }
 
-    if (!backOrderList.head) {
-      backOrderList.head = node;
+  function recursion(current) {
+    let objString = `value:${current.value},`;
+
+    if (current.prev) {
+      objString += `prev:${recursion(current.prev)},`;
     } else {
-      let prevHead = backOrderList.head;
-      backOrderList.head = node;
-      backOrderList.head.next = prevHead;
+      objString += `prev:${current.prev},`;
     }
-    originCurrent = originCurrent.next;
+
+    return `{${objString}}`;
   }
 
-  let backOrderCurrent = backOrderList.head;
-
-  while (backOrderCurrent) {
-    string += JSON.stringify(backOrderCurrent);
-    backOrderCurrent = backOrderCurrent.next;
-  }
-  return string;
+  return recursion(tail);
 };
 
 List.prototype.findByValue = function (value) {
@@ -297,3 +298,10 @@ List.prototype.sort = function (type = "ASD") {
     }
   }
 };
+
+const ll = new List();
+ll.push(0);
+ll.push(1);
+ll.push(2);
+ll.push(3);
+// console.log(ll.print());
