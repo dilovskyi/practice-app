@@ -107,4 +107,29 @@ LinkedList.prototype.addByIndex = function (index, value) {
       nodeOnIndex.prev = newNode;
     }
   }
+  this.setIndexes();
+};
+
+LinkedList.prototype.removeByIndex = function (index) {
+  this.setIndexes();
+
+  if (index === this.head.index) {
+    this.head = this.head.next;
+    this.head.prev = null;
+  } else if (index === this.tail.index) {
+    this.tail = this.tail.prev;
+    this.tail.next = null;
+  } else {
+    let current = this.head.next;
+    while (current) {
+      if (current.index === index) {
+        const beforeCurrent = current.prev;
+        const afterCurrent = current.next;
+        beforeCurrent.next = afterCurrent;
+        afterCurrent.prev = beforeCurrent;
+      }
+      current = current.next;
+    }
+  }
+  this.setIndexes();
 };
