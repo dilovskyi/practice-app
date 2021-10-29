@@ -133,3 +133,24 @@ LinkedList.prototype.removeByIndex = function (index) {
   }
   this.setIndexes();
 };
+
+LinkedList.prototype.removeByValue = function (value) {
+  if (value === this.head.value) {
+    this.head = this.head.next;
+    this.head.prev = null;
+  } else if (value === this.tail.value) {
+    this.tail = this.tail.prev;
+    this.tail.next = null;
+  } else {
+    let current = this.head.next;
+    while (current) {
+      if (current.value === value) {
+        const beforeCurrent = current.prev;
+        const afterCurrent = current.next;
+        beforeCurrent.next = afterCurrent;
+        afterCurrent.prev = beforeCurrent;
+      }
+      current = current.next;
+    }
+  }
+};
