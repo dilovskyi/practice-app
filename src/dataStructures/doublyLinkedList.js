@@ -154,3 +154,57 @@ LinkedList.prototype.removeByValue = function (value) {
     }
   }
 };
+
+LinkedList.prototype.print = function (viewType = "normal") {
+  function getNext(node) {
+    if (!node) {
+      return null;
+    }
+    let objString = `value:${node.value},`;
+
+    if (node.next) {
+      objString += `next:${getNext(node.next)},`;
+    } else {
+      objString += `next:${node.next},`;
+    }
+
+    return `{${objString}}`;
+  }
+
+  function getPrev(node) {
+    if (!node) {
+      return null;
+    }
+    let objString = `value:${node.value},`;
+
+    if (node.prev) {
+      objString += `prev:${getPrev(node.prev)},`;
+    } else {
+      objString += `prev:${node.prev},`;
+    }
+
+    return `{${objString}}`;
+  }
+
+  let mainString = "";
+
+  // Render string on each listItem
+  function getFullList(startNode) {
+    if (startNode) {
+      // Check viewType
+      if (viewType === "backOrder") {
+        getFullList(startNode.next);
+      }
+      // Add to main string
+      mainString += `,\n{value:${startNode.value},prev:${getPrev(
+        startNode.prev
+      )},next:${getNext(startNode.next)}}`;
+
+      if (viewType === "normal") {
+        getFullList(startNode.next);
+      }
+    }
+    return mainString;
+  }
+  return getFullList(this.head);
+};
