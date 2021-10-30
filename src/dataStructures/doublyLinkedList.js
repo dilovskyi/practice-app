@@ -9,6 +9,9 @@ function Node(value, prev = null, next = null) {
   this.next = next;
 }
 
+Node.prototype = LinkedList.prototype;
+Node.consructor = Node;
+
 LinkedList.prototype.setIndexes = function () {
   let currentElem = this.head;
   let indexCounter = 0;
@@ -155,7 +158,10 @@ LinkedList.prototype.removeByValue = function (value) {
   }
 };
 
-LinkedList.prototype.print = function (viewType = "normal") {
+// ASC
+// DESC
+
+LinkedList.prototype.print = function (viewType = "ASC") {
   function getNext(node) {
     if (!node) {
       return null;
@@ -192,7 +198,7 @@ LinkedList.prototype.print = function (viewType = "normal") {
   function getFullList(startNode) {
     if (startNode) {
       // Check viewType
-      if (viewType === "backOrder") {
+      if (viewType === "DESC") {
         getFullList(startNode.next);
       }
       // Add to main string
@@ -200,7 +206,7 @@ LinkedList.prototype.print = function (viewType = "normal") {
         startNode.prev
       )},next:${getNext(startNode.next)}},\n`;
 
-      if (viewType === "normal") {
+      if (viewType === "ASC") {
         getFullList(startNode.next);
       }
     }
@@ -210,29 +216,32 @@ LinkedList.prototype.print = function (viewType = "normal") {
 };
 
 LinkedList.prototype.simplePrint = function () {
-  let current = this.head;
-
   let getSiblings = (listItem) => {
     let siblingSrting = "";
     if (listItem.prev) {
-      siblingSrting += "prev:" + current.prev.value + ",";
+      siblingSrting += "prev:" + listItem.prev.value + ",";
     } else {
       siblingSrting += "prev:null,";
     }
 
     if (listItem.next) {
-      siblingSrting += "next:" + current.next.value + ",";
+      siblingSrting += "next:" + listItem.next.value + ",";
     } else {
       siblingSrting += "next:null,";
     }
     return siblingSrting;
   };
 
-  let mainSting = "";
+  if (!this.head) {
+    return "{" + getSiblings(this) + "currentValue:" + this.value + "}" + ",";
+  }
+
+  let mainString = "";
+  let current = this.head;
   while (current) {
-    mainSting +=
+    mainString +=
       "{" + getSiblings(current) + "currentValue:" + current.value + "}" + ",";
     current = current.next;
   }
-  return mainSting;
+  return mainString;
 };
