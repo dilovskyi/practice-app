@@ -245,3 +245,20 @@ LinkedList.prototype.simplePrint = function () {
   }
   return mainString;
 };
+
+LinkedList.prototype.findByValue = function (value) {
+  if (this.head.value === value) {
+    return this.head;
+  } else if (this.tail.value === value) {
+    return this.tail;
+  }
+
+  let current = this.head.next;
+  while (current) {
+    if (current.value === value) {
+      return current;
+    }
+    current = current.next;
+  }
+  return null;
+};
