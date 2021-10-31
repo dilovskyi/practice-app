@@ -262,3 +262,41 @@ LinkedList.prototype.findByValue = function (value) {
   }
   return null;
 };
+
+LinkedList.prototype.mergeWithList = function (donorHead) {
+  let current = this.head.next;
+  let merged = donorHead.next;
+
+  let parentNodes = new Node(this.head.value, this.head.prev);
+  let donorNodes = new Node(donorHead.value, parentNodes);
+  parentNodes.next = donorNodes;
+  donorNodes.prev = parentNodes;
+  this.head = parentNodes;
+
+  // bind nodes turn by tern
+  while (current || merged) {
+    if (current) {
+      parentNodes = new Node(current.value, donorNodes);
+      donorNodes.next = parentNodes;
+      current = current.next;
+    } else {
+      donorNodes.next = merged;
+      break;
+    }
+
+    if (merged) {
+      donorNodes = new Node(merged.value, parentNodes);
+      parentNodes.next = donorNodes;
+      merged = merged.next;
+    } else {
+      parentNodes.next = current;
+      break;
+    }
+  }
+
+  let newTail = this.head;
+  while (newTail.next) {
+    newTail = newTail.next;
+  }
+  this.tail = newTail;
+};

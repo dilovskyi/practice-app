@@ -180,46 +180,23 @@ List.prototype.findByValue = function (value) {
 };
 
 List.prototype.mergeWithList = function (donorHead) {
-  let parentHead = this.head;
+  let current = this.head.next;
+  let merged = donorHead;
+  let initNode = new Node(this.head.value);
+  this.head = initNode;
 
-  if (!parentHead) {
-    return donorHead;
-  } else if (!donorHead) {
-    return parentHead;
-  }
-
-  let mergedHead = null;
-  if (parentHead.data <= donorHead.data) {
-    mergedHead = parentHead;
-    parentHead = parentHead.next;
-  } else {
-    mergedHead = donorHead;
-    donorHead = donorHead.next;
-  }
-
-  let mergedTail = mergedHead;
-
-  while (parentHead && donorHead) {
-    let temp = null;
-    if (parentHead.data <= donorHead.data) {
-      temp = parentHead;
-      parentHead = parentHead.next;
-    } else {
-      temp = donorHead;
-      donorHead = donorHead.next;
+  while (current || merged) {
+    if (merged) {
+      initNode.next = merged;
+      initNode = initNode.next;
+      merged = merged.next;
     }
-
-    mergedTail.next = temp;
-    mergedTail = temp;
+    if (current) {
+      initNode.next = current;
+      initNode = initNode.next;
+      current = current.next;
+    }
   }
-
-  if (parentHead) {
-    mergedTail.next = parentHead;
-  } else if (donorHead) {
-    mergedTail.next = donorHead;
-  }
-
-  return mergedHead;
 };
 
 List.prototype.insertValueByIndex = function (index, value) {
@@ -298,10 +275,3 @@ List.prototype.sort = function (type = "ASD") {
     }
   }
 };
-
-const ll = new List();
-ll.push(0);
-ll.push(1);
-ll.push(2);
-ll.push(3);
-// console.log(ll.print());
