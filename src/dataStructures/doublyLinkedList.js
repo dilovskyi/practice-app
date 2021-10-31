@@ -346,3 +346,36 @@ LinkedList.prototype.insertListByIndex = function (index, listHead) {
     current = current.next;
   }
 };
+
+// ASC
+// DESC
+
+LinkedList.prototype.sort = function (type = "ASD") {
+  let length = 0;
+  let lengthCounter = this.head;
+  while (lengthCounter) {
+    length++;
+    lengthCounter = lengthCounter.next;
+  }
+
+  for (let i = 0; i < length; i++) {
+    let current = this.head;
+    let prev = null;
+
+    while (current) {
+      if (prev && current) {
+        if (type === "ASD" && prev.value > current.value) {
+          const val = prev.value;
+          prev.value = current.value;
+          current.value = val;
+        } else if (type === "DESC" && prev.value < current.value) {
+          const val = prev.value;
+          prev.value = current.value;
+          current.value = val;
+        }
+      }
+      prev = current;
+      current = current.next;
+    }
+  }
+};
