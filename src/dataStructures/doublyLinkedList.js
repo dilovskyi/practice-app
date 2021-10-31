@@ -300,3 +300,49 @@ LinkedList.prototype.mergeWithList = function (donorHead) {
   }
   this.tail = newTail;
 };
+
+LinkedList.prototype.insertValueByIndex = function (index, value) {
+  let current = this.head;
+  this.setIndexes();
+
+  while (current) {
+    if (current.index === index) {
+      current.value = value;
+      return;
+    }
+    current = current.next;
+  }
+  return undefined;
+};
+
+LinkedList.prototype.insertListByIndex = function (index, listHead) {
+  let prevent = null;
+  let current = this.head;
+  this.setIndexes();
+
+  // Find tail in inserting list
+  let insertedListCurrent = listHead;
+  while (insertedListCurrent) {
+    if (!insertedListCurrent.next) {
+      break;
+    }
+    insertedListCurrent = insertedListCurrent.next;
+  }
+
+  if (index === 0) {
+    this.head = listHead;
+    insertedListCurrent.next = current;
+    return;
+  }
+
+  while (current) {
+    if (current.index === index) {
+      prevent.next = listHead;
+      listHead.prev = prevent;
+      insertedListCurrent.next = current;
+      current.prev = insertedListCurrent;
+    }
+    prevent = current;
+    current = current.next;
+  }
+};
