@@ -1,4 +1,4 @@
-import { LinkedList, Node } from "./doublyLinkedList";
+import { LinkedList, Node } from "./doubleLinkedList";
 
 LinkedList.prototype.getLastNode = function () {
   let current = this.head;

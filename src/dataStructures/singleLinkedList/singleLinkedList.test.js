@@ -1,4 +1,4 @@
-import { List, Node } from "./singlyLinkedList";
+import { List, Node } from "./singleLinkedList";
 
 List.prototype.getLastNode = function () {
   let current = this.head;
@@ -141,7 +141,7 @@ describe("#findByValue", () => {
 });
 
 describe("#mergeWithList", () => {
-  it("Return original list if there is donorHead", () => {
+  it("Return original list if there is not donorHead", () => {
     const llParent = createListWithValue(10, 30);
     expect(llParent.mergeWithList()).toEqual(llParent);
   });
