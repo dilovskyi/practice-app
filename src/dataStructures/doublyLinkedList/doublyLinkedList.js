@@ -82,14 +82,18 @@ LinkedList.prototype.addByIndex = function (index, value) {
   this.setIndexes();
 
   if (index === this.head.index) {
-    const newNode = new Node(value, null, this.head);
-    this.head.prev = newNode;
-    this.head = newNode;
+    const newNode = new Node(value, this.head, null);
+    let afterHead = this.head.next;
+    this.head.next = newNode;
+    newNode.prev = this.head;
+    newNode.next = afterHead;
+    afterHead.prev = newNode;
     return this;
   } else if (index === this.tail.index) {
-    const newNode = new Node(value, this.tail);
-    this.tail.next = newNode;
-    this.tail = newNode;
+    const newNode = new Node(value, null, this.tail);
+    const beforeTail = this.tail.prev;
+    beforeTail.next = newNode;
+    this.tail.prev = newNode;
     return this;
   } else {
     // Get Node on index
@@ -204,7 +208,7 @@ LinkedList.prototype.print = function (viewType = "ASC") {
       // Add to main string
       mainString += `{value:${startNode.value},prev:${getPrev(
         startNode.prev
-      )},next:${getNext(startNode.next)}},\n`;
+      )},next:${getNext(startNode.next)}},`;
 
       if (viewType === "ASC") {
         getFullList(startNode.next);
@@ -264,6 +268,12 @@ LinkedList.prototype.findByValue = function (value) {
 };
 
 LinkedList.prototype.mergeWithList = function (donorHead) {
+  if (!this.head) {
+    this.head = donorHead;
+    return this;
+  } else if (!donorHead) {
+    return this;
+  }
   let current = this.head.next;
   let merged = donorHead.next;
 
@@ -379,3 +389,4 @@ LinkedList.prototype.sort = function (type = "ASD") {
     }
   }
 };
+export { LinkedList, Node };
