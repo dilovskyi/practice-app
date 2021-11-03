@@ -8,11 +8,10 @@ const { Option } = Select;
 
 function ChangeLanguage() {
   const changeLaguageHandler = useContext(ChangeLaguageHandlerContext);
-  const [pageLang] = useState(i18next.language);
   return (
     <>
       <Select
-        defaultValue={pageLang}
+        defaultValue={i18next.language}
         style={{ width: 120 }}
         onChange={changeLaguageHandler}
       >

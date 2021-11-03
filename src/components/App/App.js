@@ -22,12 +22,10 @@ export const ChangeLaguageHandlerContext = createContext();
 
 function App() {
   const { i18n } = useTranslation();
-  const [pageLanguage, setPageLang] = useState(i18next.language);
   const [dataTasks, setDataTask] = useState([]);
 
   const changeLaguageHandler = (language) => {
     i18n.changeLanguage(language);
-    setPageLang(language);
   };
 
   useEffect(() => {
