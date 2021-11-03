@@ -38,5 +38,39 @@
       "ru": "Rus",
       "en": "Eng"
     }
+  },
+  "taskParamName": {
+    "numList": "List of numbers",
+    "arrayLength": "Array length",
+    "initValue": "Initial value",
+    "diff": "Difference",
+    "searchedNum": "Searched number",
+    "lastValue": "The last value of the array"
+  },
+  "taskDescription": {
+    "isTwoDigitAndThreeDigitAreInTurn": "Find out if the sequence of these numbers is one that uses the following numbers, two-digit, three-digit, two-digit, etc.). For example, for sequences 34 678 12 897 23 or 674 12 567 43 the answer will be 'Yes'.",
+    "zerroArrayOuterNumsIsOne": "Fill the array with zeros, except for the first and last elements, which must be equal to one.",
+    "seriesOfZerosAndOnes": "Fill the array with zeros and ones, with these values alternating starting from zero.",
+    "arrayOfOddNumbers": "Fill an array with consecutive odd numbers, starting at one",
+    "arithmeticProgressionArr": "Form an array of elements of an arithmetic progression with a given first element x and a difference d",
+    "evenNumByIncreasing": "Form an ascending array of even numbers.",
+    "numberDividedByThree": "Form a decreasing array of numbers that are divisible by 3.",
+    "fibArr": "Create an array of first n Fibonacci numbers.",
+    "evenIsOneAndOddIsRemainderOfTheDivisionByFive": "Create an array, in even places in which there are ones, and in odd places - numbers equal to the remainder of dividing your number by 5.",
+    "threeTimesSameNum": "Create an array of three identical elements in a row",
+    "palindromeArray": "Create an array that reads equally from left to right and from right to left.",
+    "twoUnitsOnRandomIndexes": "Form an array of random numbers with exactly two ones at random positions.",
+    "zerosLessThenOnes": "Fill the array randomly with zeros and ones so that the number of ones is greater than the number of zeros.",
+    "arrToNineWithFixedAmount": "Form an array of random integers from 0 to 9, in which there are more ones from 3 to 5 and 2's more than 3's.",
+    "oddAndEvenQuantityIsEqual": "Create an array where the number of negative numbers is equal to the number of positive numbers and the positive numbers are located at random places in the array.",
+    "isNumInArr": "Determine if an array contains a given number x",
+    "quantityOfEvenNums": "Find the number of even numbers in an array.",
+    "quantityOfNumsDivisibleByThreeButNotBySeven": "Find the number of numbers in an array that are divisible by 3 but not divisible by 7.",
+    "divisibleByFirstElementOrLastWhitchMore": "Determine which numbers in the array are larger: which are divisible by the first element of the array, or which are divisible by the last element of the array.",
+    "sumAndProductOfNumsInArr": "Find the sum and product of the array elements.",
+    "sumOfOddNumsLessThanEleven": "Find the sum of the odd numbers in the array that are at most 11.",
+    "sumOfNumsBeforeEvenNum": "Find the sum of the array numbers that are located before the first even number in the array. If there are no even numbers in the array, then find the sum of all numbers except for the extreme ones.",
+    "sumOfNumsOnEvenIndexes": "Find the sum of the numbers in the array that are in even places.",
+    "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems": "Find the sum of the numbers in the array that are in odd places and are greater than the sum of the outermost elements of the array."
   }
 }
