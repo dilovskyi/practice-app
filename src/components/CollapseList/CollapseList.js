@@ -1,7 +1,8 @@
 import * as vanillaJsTasks from "../../vanillaJs";
 import { useContext } from "react";
+import { Trans } from "react-i18next";
 import { Collapse, Space, Empty } from "antd";
-import { TaskDataContext, LanguageContext } from "../App";
+import { TaskDataContext } from "../App";
 import ModalDataEntry from "../ModalDataEntry";
 const { Panel } = Collapse;
 
@@ -17,9 +18,7 @@ function getTasksByType(dataTasks, type) {
   return dataTasks.filter((item) => item.type === type);
 }
 
-// TODO: Change the method of passing a parameter
 function CollapseList({ type }) {
-  const pageLanguage = useContext(LanguageContext);
   // Get all data
   const dataTasks = useContext(TaskDataContext);
   // Get filtered data by page type
@@ -32,16 +31,16 @@ function CollapseList({ type }) {
       ) : (
         <Collapse>
           {pageData.map((item) => {
-            const { id, description, handlerName, handlerParams } = item;
+            const { id, handlerName, handlerParams } = item;
             return (
               <Panel header={handlerName} key={id}>
                 <Space size={"middle"}>
                   <ModalDataEntry
-                    description={description[pageLanguage]}
+                    description={<Trans i18nKey={`taskDescription.${id}`} />}
                     handlerFunction={findHandler(handlerName)}
                     handlerParams={handlerParams}
                   />
-                  {description[pageLanguage]}
+                  <Trans i18nKey={`taskDescription.${id}`} />
                 </Space>
               </Panel>
             );

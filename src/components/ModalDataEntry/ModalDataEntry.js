@@ -1,7 +1,6 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Trans } from "react-i18next";
 import { Form, Alert, Input, Modal, Button } from "antd";
-import { LanguageContext } from "../App";
 import ResultBaner from "../ResultBaner";
 
 const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
@@ -10,7 +9,6 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
   const [argumentsArr, setArgumentsArr] = useState([]);
   const [inputValue, setInputValue] = useState(null);
   const [isValueError, setIsValueError] = useState(null);
-  const pageLanguage = useContext(LanguageContext);
   const [form] = Form.useForm();
 
   const validationHandler = (value) => {
@@ -86,9 +84,12 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
       >
         <Form form={form} layout="vertical">
           {handlerParams.map((param, index) => {
-            const { pos, label } = param;
+            const { pos, id } = param;
             return (
-              <Form.Item key={index} label={label[pageLanguage]}>
+              <Form.Item
+                key={index}
+                label={<Trans i18nKey={`taskParamName.${id}`} />}
+              >
                 <Input
                   type="text"
                   onChange={(event) =>

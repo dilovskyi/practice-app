@@ -1,17 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Select } from "antd";
 import { Trans } from "react-i18next";
+import i18next from "../../i18n";
 import { LANGUAGES } from "../../constants";
-import { LanguageContext, ChangeLaguageHandlerContext } from "../App";
+import { ChangeLaguageHandlerContext } from "../App";
 const { Option } = Select;
 
 function ChangeLanguage() {
-  const pageLanguage = useContext(LanguageContext);
   const changeLaguageHandler = useContext(ChangeLaguageHandlerContext);
+  const [pageLang] = useState(i18next.language);
   return (
     <>
       <Select
-        defaultValue={pageLanguage}
+        defaultValue={pageLang}
         style={{ width: 120 }}
         onChange={changeLaguageHandler}
       >

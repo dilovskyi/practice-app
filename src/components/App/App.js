@@ -17,12 +17,12 @@ import FindPage from "../FindPage";
 import SortPage from "../SortPage";
 
 export const TaskDataContext = createContext();
-export const LanguageContext = createContext();
+// export const LanguageContext = createContext();
 export const ChangeLaguageHandlerContext = createContext();
 
 function App() {
   const { i18n } = useTranslation();
-  const [pageLang, setPageLang] = useState(i18next.language);
+  const [pageLanguage, setPageLang] = useState(i18next.language);
   const [dataTasks, setDataTask] = useState([]);
 
   const changeLaguageHandler = (language) => {
@@ -39,21 +39,19 @@ function App() {
   return (
     <>
       <Router>
-        <LanguageContext.Provider value={pageLang}>
-          <ChangeLaguageHandlerContext.Provider value={changeLaguageHandler}>
-            <AppHeader />
-          </ChangeLaguageHandlerContext.Provider>
-          <TaskDataContext.Provider value={dataTasks}>
-            <Switch>
-              <Route exact path={PAGE_PATH.home} component={HomePage} />
-              <Route path={PAGE_PATH.generate} component={GeneratePage} />
-              <Route path={PAGE_PATH.compare} component={ComparePage} />
-              <Route path={PAGE_PATH.find} component={FindPage} />
-              <Route path={PAGE_PATH.sort} component={SortPage} />
-              <Redirect to={PAGE_PATH.home} />
-            </Switch>
-          </TaskDataContext.Provider>
-        </LanguageContext.Provider>
+        <ChangeLaguageHandlerContext.Provider value={changeLaguageHandler}>
+          <AppHeader />
+        </ChangeLaguageHandlerContext.Provider>
+        <TaskDataContext.Provider value={dataTasks}>
+          <Switch>
+            <Route exact path={PAGE_PATH.home} component={HomePage} />
+            <Route path={PAGE_PATH.generate} component={GeneratePage} />
+            <Route path={PAGE_PATH.compare} component={ComparePage} />
+            <Route path={PAGE_PATH.find} component={FindPage} />
+            <Route path={PAGE_PATH.sort} component={SortPage} />
+            <Redirect to={PAGE_PATH.home} />
+          </Switch>
+        </TaskDataContext.Provider>
       </Router>
     </>
   );
