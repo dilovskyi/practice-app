@@ -1,8 +1,7 @@
 import { Result } from "antd";
-import { Trans } from "react-i18next";
 import { SmileOutlined } from "@ant-design/icons";
 
-function ResultBaner({ result }) {
+function ResultBaner({ t, result }) {
   const validateResult = (value) => {
     if (Array.isArray(value)) {
       return value.join(", ");
@@ -16,7 +15,7 @@ function ResultBaner({ result }) {
     <>
       <Result
         icon={<SmileOutlined />}
-        title={<Trans i18nKey="resultBaner.title" />}
+        title={t("resultBaner.title")}
         extra={validateResult(result)}
       />
     </>
