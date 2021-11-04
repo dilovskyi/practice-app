@@ -1,4 +1,5 @@
 import { Result } from "antd";
+import PropTypes from "prop-types"; // ES6
 import { SmileOutlined } from "@ant-design/icons";
 
 function ResultBaner({ t, result }) {
@@ -21,5 +22,14 @@ function ResultBaner({ t, result }) {
     </>
   );
 }
+
+ResultBaner.propTypes = {
+  t: PropTypes.func.isRequired,
+  result: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.array,
+    PropTypes.string,
+  ]).isRequired,
+};
 
 export default ResultBaner;
