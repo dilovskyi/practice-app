@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ResultBaner from "./ResultBaner";
+import ResultBaner from "./ResultBanner";
 
 describe("<ResultBaner/>", () => {
   it("is title in baner", () => {
-    render(<ResultBaner t={(key) => key} />);
+    render(<ResultBaner t={(key) => key} result={""} />);
     const titleString = screen.getByText(/resultBaner.title/i);
     expect(titleString).toBeInTheDocument();
   });
