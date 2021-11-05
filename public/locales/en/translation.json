@@ -72,5 +72,8 @@
     "sumOfNumsBeforeEvenNum": "Find the sum of the array numbers that are located before the first even number in the array. If there are no even numbers in the array, then find the sum of all numbers except for the extreme ones.",
     "sumOfNumsOnEvenIndexes": "Find the sum of the numbers in the array that are in even places.",
     "sumOfNumsOnOddIndexesAndBiggerThanSumOfOuterElems": "Find the sum of the numbers in the array that are in odd places and are greater than the sum of the outermost elements of the array."
+  },
+  "SomeProblems": {
+    "title": "There are some problems with your operation."
   }
 }
