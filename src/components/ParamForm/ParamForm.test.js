@@ -18,11 +18,11 @@ const handlerParams = [
   },
 ];
 
-const setup = () => {
+const setup = (mockFu) => {
   const utils = render(
     <ParamForm
       t={(t) => t}
-      inputOnChangeHandler={() => null}
+      inputOnChangeHandler={mockFu}
       handlerParams={handlerParams}
     />
   );
@@ -35,14 +35,16 @@ const setup = () => {
 
 describe("<ParamForm/>", () => {
   it("inputs rendering", async () => {
-    const { queryAllByLabelText } = setup();
+    const { queryAllByLabelText } = setup(() => null);
 
     await waitFor(() => expect(queryAllByLabelText(/taskParamName/i)));
   });
 
   it("on change handler", async () => {
-    const { input } = setup();
+    const inputOnChangeHandler = jest.fn(() => "1,2,3");
+    const { input } = setup(inputOnChangeHandler);
     fireEvent.change(input, { target: { value: "23" } });
     expect(input.value).toBe("23");
+    expect(inputOnChangeHandler).toHaveBeenCalledTimes(1);
   });
 });
