@@ -75,5 +75,6 @@
   },
   "SomeProblems": {
     "title": "There are some problems with your operation."
-  }
+  },
+  "noData": "Нет данных"
 }

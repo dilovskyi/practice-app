@@ -1,36 +1,16 @@
+import PropTypes from "prop-types"; // ES6
 import { useState } from "react";
-import { Trans } from "react-i18next";
-import { Form, Alert, Input, Modal, Button } from "antd";
-import ResultBaner from "../ResultBaner";
+import { Alert, Modal, Button } from "antd";
+import { validationHandler, convertValueInNums } from "../../helpers";
+import ResultBanner from "../ResultBanner";
+import ParamForm from "../ParamForm";
 
-const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
+const ModalDataEntry = ({ t, description, handlerFunction, handlerParams }) => {
   const [isModalVisible, setIsModalVisible] = useState(null);
   const [handlerResult, setHandlerResult] = useState(null);
   const [argumentsArr, setArgumentsArr] = useState([]);
-  const [inputValue, setInputValue] = useState(null);
+  // const [inputValue, setInputValue] = useState(null);
   const [isValueError, setIsValueError] = useState(null);
-  const [form] = Form.useForm();
-
-  const validationHandler = (value) => {
-    let isError = false;
-    let outPutValue = value;
-    const regExp = new RegExp(/[^\d|,\s]/g);
-
-    if (regExp.test(value)) {
-      isError = true;
-      outPutValue = value.replace(regExp, "");
-    }
-    setIsValueError(isError);
-    setInputValue(outPutValue);
-    return outPutValue;
-  };
-
-  function convertValueInNums(value) {
-    // Create arr of numbers from string
-    const argumentsArr = value.split(",");
-    const numberArgumentsArr = argumentsArr.map((item) => +item);
-    return numberArgumentsArr;
-  }
 
   // Combining parameters from each modal into an array
   const combineParams = (value, pos) => {
@@ -42,7 +22,10 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
   };
 
   const inputOnChangeHandler = (value, pos) => {
-    const validatedValue = validationHandler(value);
+    const { validatedValue, isError } = validationHandler(value);
+    // setInputValue(validatedValue);
+    setIsValueError(isError);
+
     let inputNumberValue = convertValueInNums(validatedValue);
 
     // If input value was number (arrLenght or LastNumber) - set as number not array
@@ -59,6 +42,7 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
   const handleCancel = () => {
     setIsModalVisible(false);
     setIsValueError(false);
+    setHandlerResult(null);
   };
 
   // Run task handler
@@ -69,50 +53,51 @@ const ModalDataEntry = ({ description, handlerFunction, handlerParams }) => {
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        <Trans i18nKey="buttonsText.modal.open" />
+        {t("buttonsText.modal.open")}
       </Button>
       <Modal
         visible={isModalVisible}
         title={description}
         onOk={handleTaskResult}
         okButtonProps={{ disabled: isValueError }}
-        okText={<Trans i18nKey="buttonsText.modal.start" />}
+        okText={t("buttonsText.modal.start")}
         onCancel={handleCancel}
-        cancelText={<Trans i18nKey="buttonsText.modal.cencel" />}
+        cancelText={t("buttonsText.modal.cencel")}
         width={1000}
         destroyOnClose="true"
       >
-        <Form form={form} layout="vertical">
-          {handlerParams.map((param, index) => {
-            const { pos, id } = param;
-            return (
-              <Form.Item
-                key={index}
-                label={<Trans i18nKey={`taskParamName.${id}`} />}
-              >
-                <Input
-                  type="text"
-                  onChange={(event) =>
-                    inputOnChangeHandler(event.target.value, pos)
-                  }
-                />
-              </Form.Item>
-            );
-          })}
-        </Form>
+        <ParamForm
+          handlerParams={handlerParams}
+          inputOnChangeHandler={inputOnChangeHandler}
+        />
         {isValueError ? (
           <Alert
-            message={<Trans i18nKey="modalDataEntry.warning" />}
+            message={t("modalDataEntry.warning")}
             type="warning"
             showIcon
             banner
             closable
           />
         ) : null}
-        {handlerResult === null ? null : <ResultBaner result={handlerResult} />}
+        {handlerResult === null ? null : (
+          <ResultBanner result={handlerResult} />
+        )}
       </Modal>
     </>
   );
+};
+
+ModalDataEntry.defaultProps = {
+  t: (key) => key,
+  description: "No data",
+  handlerFunction: () => "No data",
+  handlerParams: [],
+};
+
+ModalDataEntry.propTypes = {
+  description: PropTypes.string,
+  handlerFunction: PropTypes.func,
+  handlerParams: PropTypes.array,
 };
 
 export default ModalDataEntry;
