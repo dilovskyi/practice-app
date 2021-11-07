@@ -90,7 +90,7 @@ const ModalDataEntry = ({ t, description, handlerFunction, handlerParams }) => {
 ModalDataEntry.defaultProps = {
   t: (key) => key,
   description: "No data",
-  handlerFunction: () => "No data",
+  handlerFunction: () => "No result",
   handlerParams: [],
 };
 
