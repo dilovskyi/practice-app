@@ -67,7 +67,10 @@
       }
     },
     "coverageReporters": [
-      "text"
+      "lcov",
+      "text-summary",
+      "text",
+      "html"
     ]
   },
   "devDependencies": {

@@ -29,7 +29,7 @@ ResultBaner.propTypes = {
     PropTypes.bool,
     PropTypes.array,
     PropTypes.string,
-  ]).isRequired,
+  ]),
 };
 
 export default ResultBaner;
