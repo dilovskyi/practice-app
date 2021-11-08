@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 
-function WIthSuspence({ children }) {
+function WithSuspence({ children }) {
   return (
     <>
       <Suspense fallback="Loading...">{children}</Suspense>
@@ -8,4 +8,4 @@ function WIthSuspence({ children }) {
   );
 }
 
-export default WIthSuspence;
+export default WithSuspence;

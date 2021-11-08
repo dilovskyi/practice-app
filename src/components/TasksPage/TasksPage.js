@@ -1,9 +1,8 @@
 import CollapseList from "../CollapseList";
-import { useLocation } from "react-router-dom";
 
-function TasksPage() {
-  let location = useLocation();
-  const pageType = location.pathname.slice(1, location.length);
+function TasksPage({ location }) {
+  console.log(location);
+  const pageType = location.slice(1, location.length);
   return <CollapseList type={pageType} />;
 }
 

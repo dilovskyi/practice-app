@@ -11,21 +11,20 @@ import { getData } from "../../services/getData";
 import { PAGE_PATH } from "../../constants";
 import AppHeader from "../AppHeader";
 import HomePage from "../HomePage";
-import GeneratePage from "../GeneratePage";
-import ComparePage from "../ComparePage";
-import FindPage from "../FindPage";
-import SortPage from "../SortPage";
+import TasksPage from "../TasksPage";
 
 export const TaskDataContext = createContext();
-// export const LanguageContext = createContext();
+export const LanguageContext = createContext();
 export const ChangeLaguageHandlerContext = createContext();
 
 function App() {
   const { i18n } = useTranslation();
+  const [pageLang, setPageLang] = useState(i18next.language);
   const [dataTasks, setDataTask] = useState([]);
 
   const changeLaguageHandler = (language) => {
     i18n.changeLanguage(language);
+    setPageLang(language);
   };
 
   useEffect(() => {
@@ -37,19 +36,29 @@ function App() {
   return (
     <>
       <Router>
-        <ChangeLaguageHandlerContext.Provider value={changeLaguageHandler}>
-          <AppHeader />
-        </ChangeLaguageHandlerContext.Provider>
-        <TaskDataContext.Provider value={dataTasks}>
-          <Switch>
-            <Route exact path={PAGE_PATH.home} component={HomePage} />
-            <Route path={PAGE_PATH.generate} component={GeneratePage} />
-            <Route path={PAGE_PATH.compare} component={ComparePage} />
-            <Route path={PAGE_PATH.find} component={FindPage} />
-            <Route path={PAGE_PATH.sort} component={SortPage} />
-            <Redirect to={PAGE_PATH.home} />
-          </Switch>
-        </TaskDataContext.Provider>
+        <LanguageContext.Provider value={pageLang}>
+          <ChangeLaguageHandlerContext.Provider value={changeLaguageHandler}>
+            <AppHeader />
+          </ChangeLaguageHandlerContext.Provider>
+          <TaskDataContext.Provider value={dataTasks}>
+            <Switch>
+              <Route exact path={PAGE_PATH.home} component={HomePage} />
+              <Route path={PAGE_PATH.generate}>
+                <TasksPage location={PAGE_PATH.generate} />
+              </Route>
+              <Route path={PAGE_PATH.compare}>
+                <TasksPage location={PAGE_PATH.compare} />
+              </Route>
+              <Route path={PAGE_PATH.find}>
+                <TasksPage location={PAGE_PATH.find} />
+              </Route>
+              <Route path={PAGE_PATH.sort}>
+                <TasksPage location={PAGE_PATH.sort} />
+              </Route>
+              <Redirect to={PAGE_PATH.home} />
+            </Switch>
+          </TaskDataContext.Provider>
+        </LanguageContext.Provider>
       </Router>
     </>
   );
