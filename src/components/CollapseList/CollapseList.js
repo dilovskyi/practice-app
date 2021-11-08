@@ -1,24 +1,12 @@
-import * as vanillaJsTasks from "../../vanillaJs";
 import { useContext } from "react";
-import { Trans } from "react-i18next";
+import PropTypes from "prop-types";
 import { Collapse, Space, Empty } from "antd";
+import { getTasksByType, findHandlerFunc } from "../../helpers";
 import { TaskDataContext } from "../App";
 import ModalDataEntry from "../ModalDataEntry";
 const { Panel } = Collapse;
 
-function findHandler(handlerName) {
-  for (let key in vanillaJsTasks) {
-    if (handlerName === key) {
-      return vanillaJsTasks[key];
-    }
-  }
-}
-
-function getTasksByType(dataTasks, type) {
-  return dataTasks.filter((item) => item.type === type);
-}
-
-function CollapseList({ type }) {
+function CollapseList({ t, type }) {
   // Get all data
   const dataTasks = useContext(TaskDataContext);
   // Get filtered data by page type
@@ -33,14 +21,14 @@ function CollapseList({ type }) {
           {pageData.map((item) => {
             const { id, handlerName, handlerParams } = item;
             return (
-              <Panel header={handlerName} key={id}>
+              <Panel header={handlerName} key={id} role="collapse-list__item">
                 <Space size={"middle"}>
                   <ModalDataEntry
-                    description={<Trans i18nKey={`taskDescription.${id}`} />}
-                    handlerFunction={findHandler(handlerName)}
+                    description={t(`taskDescription.${id}`)}
+                    handlerFunction={findHandlerFunc(handlerName)}
                     handlerParams={handlerParams}
                   />
-                  <Trans i18nKey={`taskDescription.${id}`} />
+                  {t(`taskDescription.${id}`)}
                 </Space>
               </Panel>
             );
@@ -50,5 +38,9 @@ function CollapseList({ type }) {
     </>
   );
 }
+
+ModalDataEntry.propTypes = {
+  type: PropTypes.string,
+};
 
 export default CollapseList;
