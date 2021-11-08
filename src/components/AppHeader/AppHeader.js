@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
-import { Trans } from "react-i18next";
-import { Menu, PageHeader } from "antd";
-import { SettingOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { PageHeader } from "antd";
 import { useLocation, useHistory } from "react-router-dom";
-import { PAGES } from "../../constants";
 import ChangeLanguage from "../ChangeLanguage";
+import AppMenu from "../AppMenu";
 
-function AppHeader() {
+function AppHeader({ t }) {
   // Get current location and set it to the useState like parameter on initialization
   let location = useLocation();
   let history = useHistory();
@@ -28,7 +25,7 @@ function AppHeader() {
     setCurrentMenuItem(path);
   }, [location]);
 
-  const handleSetCurrentMenuItem = (e) => {
+  const setCurrentMenuItemHandler = (e) => {
     setCurrentMenuItem(e.key);
   };
 
@@ -42,25 +39,17 @@ function AppHeader() {
       <PageHeader
         className="site-page-header"
         onBack={handleHistoryGoBack}
-        title={<Trans i18nKey={`${pageType}Page.title`} />}
-        subTitle={<Trans i18nKey={`${pageType}Page.subTitle`} />}
+        title={t(`${pageType}Page.title`)}
+        subTitle={t(`${pageType}Page.subTitle`)}
         extra={<ChangeLanguage />}
       >
-        <Menu
-          onClick={handleSetCurrentMenuItem}
-          selectedKeys={[currentMenuItem]}
-          mode="horizontal"
-        >
-          {PAGES.map(({ name, path }) => {
-            return (
-              <Menu.Item key={name} icon={<SettingOutlined />}>
-                <Link to={path} onClick={() => setPageType(name)}>
-                  <Trans i18nKey={`headerItems.${name}`} />
-                </Link>
-              </Menu.Item>
-            );
-          })}
-        </Menu>
+        <AppMenu
+          onClickItemHandler={setCurrentMenuItemHandler}
+          currentMenuItem={currentMenuItem}
+          setPageTypeHandler={(typeName) => {
+            setPageType(typeName);
+          }}
+        />
       </PageHeader>
     </>
   );
